@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ce4nn0so3cl1m"
+path="res://.godot/imported/VENDOR QUEST V2.mp3-586e09e1bd1dfa033d97130220088df5.mp3str"
+
+[deps]
+
+source_file="res://assets/music/VENDOR QUEST V2.mp3"
+dest_files=["res://.godot/imported/VENDOR QUEST V2.mp3-586e09e1bd1dfa033d97130220088df5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

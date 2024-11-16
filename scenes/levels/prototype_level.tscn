@@ -1,0 +1,274 @@
+[gd_scene load_steps=32 format=3 uid="uid://ci6g8naqx2d1i"]
+
+[ext_resource type="Texture2D" uid="uid://dg0ai31k46ptn" path="res://assets/sprites/background/protoype_level_bg_HD.png" id="1_h408d"]
+[ext_resource type="Texture2D" uid="uid://qkmd50vihdcm" path="res://assets/sprites/objects/cart_post.png" id="2_f6c57"]
+[ext_resource type="PackedScene" uid="uid://cpsd6qipli5gg" path="res://scenes/enemies/en_slithorax.tscn" id="2_whljd"]
+[ext_resource type="Texture2D" uid="uid://c1c5vx14xqurr" path="res://assets/sprites/objects/cart_bottom.png" id="3_3royk"]
+[ext_resource type="Texture2D" uid="uid://320vfupp1hqk" path="res://assets/sprites/objects/container-wind.png" id="3_k16q2"]
+[ext_resource type="Texture2D" uid="uid://c135xbo32h57c" path="res://assets/sprites/objects/container-slash.png" id="3_monfb"]
+[ext_resource type="Texture2D" uid="uid://1oki3fpov1fo" path="res://assets/sprites/objects/container-ice.png" id="4_4txqm"]
+[ext_resource type="Texture2D" uid="uid://c3vwuv07xg41j" path="res://assets/sprites/objects/container-pierce.png" id="4_byq8n"]
+[ext_resource type="Texture2D" uid="uid://cexoq2o70ho0f" path="res://assets/sprites/objects/cart_top.png" id="4_jy3xj"]
+[ext_resource type="Texture2D" uid="uid://cpn82xhcfbxkw" path="res://assets/sprites/objects/container-shock.png" id="5_3781u"]
+[ext_resource type="Texture2D" uid="uid://cn05nknx57ktu" path="res://assets/sprites/objects/container-blunt.png" id="5_csbdd"]
+[ext_resource type="Texture2D" uid="uid://bbg0jh4sbwg11" path="res://assets/sprites/objects/container-fire.png" id="6_w5cbj"]
+[ext_resource type="Texture2D" uid="uid://njh4enpqyrnc" path="res://assets/sprites/objects/hotpot.png" id="7_72mqj"]
+[ext_resource type="Texture2D" uid="uid://dgl83gfnx3nlh" path="res://assets/sprites/objects/animated-oil/oil1.png" id="8_5xklg"]
+[ext_resource type="Texture2D" uid="uid://dmotrty3jclcy" path="res://assets/sprites/objects/prep-table.png" id="8_syn3c"]
+[ext_resource type="Texture2D" uid="uid://65aqblegemqt" path="res://assets/sprites/objects/animated-oil/oil2.png" id="9_qjdtc"]
+[ext_resource type="Texture2D" uid="uid://b1p64tx5hptwe" path="res://assets/sprites/objects/animated-oil/oil3.png" id="10_pfbis"]
+[ext_resource type="Texture2D" uid="uid://bpjdpoh0vgshd" path="res://assets/sprites/objects/animated-oil/oil4.png" id="11_i1cxx"]
+[ext_resource type="Texture2D" uid="uid://02i3pewy4pvd" path="res://assets/sprites/objects/animated-oil/oil5.png" id="12_ahv26"]
+[ext_resource type="Texture2D" uid="uid://dpbnukxbyescg" path="res://assets/sprites/objects/animated-oil/oil6.png" id="13_df2a1"]
+[ext_resource type="Texture2D" uid="uid://baknoafccwmjj" path="res://assets/sprites/objects/animated-oil/oil7.png" id="14_sv736"]
+[ext_resource type="Texture2D" uid="uid://bc7hfw6tfoqn" path="res://assets/sprites/objects/animated-oil/oil8.png" id="15_0ec6k"]
+[ext_resource type="Texture2D" uid="uid://ciicrmhewkx1" path="res://assets/sprites/objects/animated-oil/oil9.png" id="16_n5pkk"]
+[ext_resource type="Texture2D" uid="uid://jgucgrafceq0" path="res://assets/sprites/objects/animated-oil/oil10.png" id="17_u04ss"]
+[ext_resource type="Texture2D" uid="uid://coyklkujo04nc" path="res://assets/sprites/objects/animated-oil/oil11.png" id="18_lc2jd"]
+[ext_resource type="Texture2D" uid="uid://qsiri3i3dh04" path="res://assets/sprites/objects/animated-oil/oil12.png" id="19_fe4uo"]
+[ext_resource type="Texture2D" uid="uid://dilr2g8rccc1n" path="res://assets/sprites/objects/animated-oil/oil13.png" id="20_ylvhl"]
+[ext_resource type="Texture2D" uid="uid://3dp1xudpiff0" path="res://assets/sprites/objects/animated-oil/oil14.png" id="21_efh04"]
+[ext_resource type="Texture2D" uid="uid://dg7iuhvgfc5br" path="res://assets/sprites/objects/animated-oil/oil15.png" id="22_oejqh"]
+[ext_resource type="Texture2D" uid="uid://dgd7xwu2lu7lp" path="res://assets/sprites/objects/animated-oil/oil16.png" id="23_iwaen"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_8p4xy"]
+frames = 16
+frame_0/texture = ExtResource("8_5xklg")
+frame_0/duration = 0.02
+frame_1/texture = ExtResource("9_qjdtc")
+frame_1/duration = 0.04
+frame_2/texture = ExtResource("10_pfbis")
+frame_2/duration = 0.04
+frame_3/texture = ExtResource("11_i1cxx")
+frame_3/duration = 0.04
+frame_4/texture = ExtResource("12_ahv26")
+frame_4/duration = 0.04
+frame_5/texture = ExtResource("13_df2a1")
+frame_5/duration = 0.04
+frame_6/texture = ExtResource("14_sv736")
+frame_6/duration = 0.04
+frame_7/texture = ExtResource("15_0ec6k")
+frame_7/duration = 0.04
+frame_8/texture = ExtResource("16_n5pkk")
+frame_8/duration = 0.04
+frame_9/texture = ExtResource("17_u04ss")
+frame_9/duration = 0.04
+frame_10/texture = ExtResource("18_lc2jd")
+frame_10/duration = 0.04
+frame_11/texture = ExtResource("19_fe4uo")
+frame_11/duration = 0.04
+frame_12/texture = ExtResource("20_ylvhl")
+frame_12/duration = 0.04
+frame_13/texture = ExtResource("21_efh04")
+frame_13/duration = 0.04
+frame_14/texture = ExtResource("22_oejqh")
+frame_14/duration = 0.04
+frame_15/texture = ExtResource("23_iwaen")
+frame_15/duration = 0.04
+
+[node name="PrototypeLevel" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [1057.0, 1498.0]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="BackgroundLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2147.0
+offset_right = 2147.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_h408d")
+metadata/_edit_lock_ = true
+
+[node name="ActionLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="EnSlithorax" parent="ActionLayer" instance=ExtResource("2_whljd")]
+
+[node name="CartLayer" type="CanvasLayer" parent="."]
+
+[node name="Cart" type="Control" parent="CartLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CartPost" type="TextureRect" parent="CartLayer/Cart"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -720.0
+offset_right = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f6c57")
+
+[node name="CnWind" type="TextureRect" parent="CartLayer/Cart/CartPost"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -1779.0
+offset_right = 329.0
+offset_bottom = -1504.0
+grow_vertical = 0
+texture = ExtResource("3_k16q2")
+
+[node name="CnIce" type="TextureRect" parent="CartLayer/Cart/CartPost"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -1413.0
+offset_right = 326.0
+offset_bottom = -1048.0
+grow_vertical = 0
+texture = ExtResource("4_4txqm")
+
+[node name="CnShock" type="TextureRect" parent="CartLayer/Cart/CartPost"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -314.0
+offset_top = -1819.0
+offset_bottom = -1504.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_3781u")
+
+[node name="TextureRect" type="TextureRect" parent="CartLayer/Cart/CartPost"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -302.0
+offset_top = -1370.0
+offset_bottom = -1056.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_w5cbj")
+
+[node name="CartBottom" type="TextureRect" parent="CartLayer/Cart"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -720.0
+offset_top = -794.0
+offset_right = 720.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_3royk")
+
+[node name="CnPierce" type="TextureRect" parent="CartLayer/Cart/CartBottom"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 165.0
+offset_top = -184.0
+offset_right = 555.0
+offset_bottom = 171.0
+grow_horizontal = 2
+texture = ExtResource("4_byq8n")
+
+[node name="CnBlunt" type="TextureRect" parent="CartLayer/Cart/CartBottom"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -569.5
+offset_top = -216.0
+offset_right = -198.5
+offset_bottom = 176.0
+grow_horizontal = 2
+texture = ExtResource("5_csbdd")
+
+[node name="CnSlash" type="TextureRect" parent="CartLayer/Cart/CartBottom"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -246.5
+offset_top = -272.0
+offset_right = 246.5
+offset_bottom = 179.0
+grow_horizontal = 2
+texture = ExtResource("3_monfb")
+
+[node name="Hotpot" type="TextureRect" parent="CartLayer/Cart/CartBottom"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -681.0
+offset_right = 899.0
+grow_vertical = 0
+texture = ExtResource("7_72mqj")
+
+[node name="TextureRect" type="TextureRect" parent="CartLayer/Cart/CartBottom/Hotpot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -290.0
+offset_right = 375.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_8p4xy")
+
+[node name="Prepboard" type="TextureRect" parent="CartLayer/Cart/CartBottom"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -538.0
+offset_top = -610.0
+offset_right = -48.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_syn3c")
+
+[node name="CartTop" type="TextureRect" parent="CartLayer/Cart"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -720.0
+offset_right = 720.0
+offset_bottom = 259.0
+grow_horizontal = 2
+texture = ExtResource("4_jy3xj")
+
+[node name="Camera2D" type="Camera2D" parent="."]

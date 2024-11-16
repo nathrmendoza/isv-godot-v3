@@ -1,0 +1,174 @@
+[gd_scene load_steps=12 format=3 uid="uid://b8kt4kmkq4etv"]
+
+[ext_resource type="Script" path="res://scripts/controller_intro.gd" id="1_smshl"]
+[ext_resource type="Texture2D" uid="uid://61e4g36ecri1" path="res://assets/sprites/background/intro_panel_1.png" id="2_telb3"]
+[ext_resource type="Texture2D" uid="uid://oaqpgajcx6vf" path="res://assets/sprites/background/intro_panel_2.png" id="3_ljgyy"]
+[ext_resource type="Texture2D" uid="uid://1iubo31wt5bi" path="res://assets/sprites/background/intro_panel_4.png" id="4_m6lc3"]
+[ext_resource type="Theme" uid="uid://btuadhest44h3" path="res://themes/ui_default.tres" id="5_jo8wq"]
+
+[sub_resource type="Animation" id="Animation_kfiby"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/FadeCover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_scdc3"]
+resource_name = "scene_fade_in"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/FadeCover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vye1f"]
+resource_name = "scene_fade_out"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/FadeCover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t7tuu"]
+_data = {
+"RESET": SubResource("Animation_kfiby"),
+"scene_fade_in": SubResource("Animation_scdc3"),
+"scene_fade_out": SubResource("Animation_vye1f")
+}
+
+[sub_resource type="Gradient" id="Gradient_pnrdv"]
+colors = PackedColorArray(0, 0, 0, 0.823529, 0, 0, 0, 0.333333)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hmf4h"]
+gradient = SubResource("Gradient_pnrdv")
+fill_from = Vector2(0.5, 0.688034)
+fill_to = Vector2(0.504274, 0)
+
+[node name="PrototypeIntro" type="Node2D"]
+script = ExtResource("1_smshl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t7tuu")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel1" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_telb3")
+expand_mode = 1
+
+[node name="Panel2" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_ljgyy")
+expand_mode = 1
+
+[node name="Panel3" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_m6lc3")
+expand_mode = 1
+
+[node name="TextPrompt" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -663.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_hmf4h")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/TextPrompt"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -663.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/TextPrompt/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("5_jo8wq")
+
+[node name="FadeCover" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[connection signal="gui_input" from="CanvasLayer/Control" to="." method="_on_control_gui_input"]
