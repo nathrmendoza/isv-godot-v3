@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ch5eg2l25gndd"]
 
 [ext_resource type="Shader" path="res://scripts/shaders/blur.gdshader" id="1_4aoa3"]
-[ext_resource type="Script" path="res://scripts/util_scrolling_text.gd" id="1_lgejw"]
+[ext_resource type="Script" path="res://scripts/utils_scrolling_text.gd" id="1_lgejw"]
 [ext_resource type="Theme" uid="uid://btuadhest44h3" path="res://themes/ui_default.tres" id="2_ad62m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kl8x"]
@@ -35,18 +35,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [1.0]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1944)]
-}
 
 [sub_resource type="Animation" id="Animation_43k06"]
 resource_name = "prompt_enter_anim"
@@ -74,18 +62,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 0.89),
-"update": 0,
-"values": [Vector2(0, 2256), Vector2(0, 1944)]
 }
 
 [sub_resource type="Animation" id="Animation_03y26"]
@@ -115,18 +91,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [1.0, 0.0]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(0.5, 0.89),
-"update": 0,
-"values": [Vector2(0, 1944), Vector2(0, 2256)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ekkkv"]
 _data = {
@@ -143,11 +107,12 @@ shader_parameter/mix_amount = 0.3
 shader_parameter/backdrop_color = Color(0, 0, 0, 1)
 
 [node name="TextPanelBottom" type="Panel"]
+custom_minimum_size = Vector2(0, 760)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -616.0
+offset_top = -760.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3kl8x")
@@ -192,5 +157,3 @@ layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("2_ad62m")
 text = "Lorem ipsum sid amet."
-
-[connection signal="gui_input" from="." to="." method="_toggle_next_paragraph"]

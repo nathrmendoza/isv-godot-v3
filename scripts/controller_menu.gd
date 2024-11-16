@@ -17,7 +17,7 @@ func _transition_to_intro() -> void:
 	_disable_interactions()
 	animation_player.play('menu_exit_animate')
 	await animation_player.animation_finished
-	get_tree().change_scene_to_file("res://scenes/levels/prototype_intro_v2.tscn")
+	get_tree().change_scene_to_file("res://scenes/levels/prototype_intro.tscn")
 
 func _quit_game() -> void:
 	get_tree().quit()

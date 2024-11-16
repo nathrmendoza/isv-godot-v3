@@ -1,84 +1,121 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8kt4kmkq4etv"]
+[gd_scene load_steps=10 format=3 uid="uid://bt3jey57yrb1w"]
 
-[ext_resource type="Script" path="res://scripts/controller_intro.gd" id="1_smshl"]
-[ext_resource type="Texture2D" uid="uid://61e4g36ecri1" path="res://assets/sprites/background/intro_panel_1.png" id="2_telb3"]
-[ext_resource type="Texture2D" uid="uid://oaqpgajcx6vf" path="res://assets/sprites/background/intro_panel_2.png" id="3_ljgyy"]
-[ext_resource type="Texture2D" uid="uid://1iubo31wt5bi" path="res://assets/sprites/background/intro_panel_4.png" id="4_m6lc3"]
-[ext_resource type="Theme" uid="uid://btuadhest44h3" path="res://themes/ui_default.tres" id="5_jo8wq"]
+[ext_resource type="AudioStream" uid="uid://cd31seq01o0e3" path="res://assets/music/MODIFIED-VendorQuest.mp3" id="1_qc7xx"]
+[ext_resource type="PackedScene" uid="uid://h6nrqm1bblb6" path="res://scenes/ui/transitioning_background.tscn" id="1_tb1wf"]
+[ext_resource type="Script" path="res://scripts/controller_intro.gd" id="1_u1767"]
+[ext_resource type="Texture2D" uid="uid://61e4g36ecri1" path="res://assets/sprites/background/intro_panel_1.png" id="2_noq68"]
+[ext_resource type="PackedScene" uid="uid://ch5eg2l25gndd" path="res://scenes/ui/text_panel_bottom.tscn" id="3_xxai1"]
 
-[sub_resource type="Animation" id="Animation_kfiby"]
+[sub_resource type="Animation" id="Animation_cetrc"]
+resource_name = "intro_entry_anim"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/MainControl/FadeCover:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, -10.0]
+}
+
+[sub_resource type="Animation" id="Animation_gr45j"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/FadeCover:color")
+tracks/0/path = NodePath("CanvasLayer/MainControl/FadeCover:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 0)]
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-10.0]
 }
 
-[sub_resource type="Animation" id="Animation_scdc3"]
-resource_name = "scene_fade_in"
-length = 1.2
+[sub_resource type="Animation" id="Animation_io0ba"]
+resource_name = "intro_exit_anim"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/FadeCover:color")
+tracks/0/path = NodePath("CanvasLayer/MainControl/FadeCover:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.2),
+"times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_vye1f"]
-resource_name = "scene_fade_out"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/FadeCover:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.2),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+"values": [-10.0, -80.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_t7tuu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sc111"]
 _data = {
-"RESET": SubResource("Animation_kfiby"),
-"scene_fade_in": SubResource("Animation_scdc3"),
-"scene_fade_out": SubResource("Animation_vye1f")
+"RESET": SubResource("Animation_gr45j"),
+"intro_entry_anim": SubResource("Animation_cetrc"),
+"intro_exit_anim": SubResource("Animation_io0ba")
 }
-
-[sub_resource type="Gradient" id="Gradient_pnrdv"]
-colors = PackedColorArray(0, 0, 0, 0.823529, 0, 0, 0, 0.333333)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hmf4h"]
-gradient = SubResource("Gradient_pnrdv")
-fill_from = Vector2(0.5, 0.688034)
-fill_to = Vector2(0.504274, 0)
 
 [node name="PrototypeIntro" type="Node2D"]
-script = ExtResource("1_smshl")
+script = ExtResource("1_u1767")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_t7tuu")
+"": SubResource("AnimationLibrary_sc111")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_qc7xx")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="MainControl" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,9 +123,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel1" type="TextureRect" parent="CanvasLayer/Control"]
-visible = false
-modulate = Color(0, 0, 0, 1)
+[node name="TransitioningBackground" parent="CanvasLayer/MainControl" instance=ExtResource("1_tb1wf")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_noq68")
+
+[node name="TextPanelBottom" parent="CanvasLayer/MainControl" instance=ExtResource("3_xxai1")]
+layout_mode = 1
+offset_top = 0.0
+mouse_filter = 2
+text_paragraphs = Array[String](["Virgilio was just a regular guy, running his street food cart in the lively streets of Manila. Every day, he grilled skewers, served up snacks, and chatted with his customers under the warm glow of string lights. Cooking was his passion, and sharing his food made him happy. Life was simple, and he liked it that way. But one strange night, something happened that would change everything.", "A mysterious customer handed him an odd-looking coin, unlike anything he'd seen before. When he flipped it, the coin lit up like a firework, and in an instant, a swirling portal appeared. Before Virgilio could react, he was pulled through it, leaving behind the familiar sounds and smells of his world. When he landed, he found himself in a strange forest full of glowing plants, weird creatures, and a sky that looked nothing like home.", "Just as panic set in, Virgilio spotted something familiar—his food cart. But it wasn’t exactly the same. Strange symbols were etched into the wood, and it seemed to hum with a faint magical energy. Confused but relieved, he decided to rely on what he knew best—cooking. Little did he know, this cart might be the key to surviving in this strange new world."])
+delay_animate_in = 2.5
+animate_out = false
+
+[node name="FadeCover" type="ColorRect" parent="CanvasLayer/MainControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,79 +150,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_telb3")
-expand_mode = 1
-
-[node name="Panel2" type="TextureRect" parent="CanvasLayer/Control"]
-visible = false
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("3_ljgyy")
-expand_mode = 1
-
-[node name="Panel3" type="TextureRect" parent="CanvasLayer/Control"]
-visible = false
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_m6lc3")
-expand_mode = 1
-
-[node name="TextPrompt" type="TextureRect" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -663.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-texture = SubResource("GradientTexture2D_hmf4h")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/TextPrompt"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -663.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-theme_override_constants/margin_left = 48
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 48
-theme_override_constants/margin_bottom = 48
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/TextPrompt/MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme = ExtResource("5_jo8wq")
-
-[node name="FadeCover" type="ColorRect" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-
-[connection signal="gui_input" from="CanvasLayer/Control" to="." method="_on_control_gui_input"]
+[connection signal="gui_input" from="CanvasLayer/MainControl" to="." method="_on_main_control_input"]
+[connection signal="gui_input" from="CanvasLayer/MainControl" to="CanvasLayer/MainControl/TextPanelBottom" method="_toggle_next_paragraph"]
+[connection signal="on_transition_finished" from="CanvasLayer/MainControl/TransitioningBackground" to="." method="_on_bg_transition_finish"]
+[connection signal="on_transition_start" from="CanvasLayer/MainControl/TransitioningBackground" to="." method="_on_bg_transition_start"]
+[connection signal="on_finished" from="CanvasLayer/MainControl/TextPanelBottom" to="." method="_on_story_finished"]
+[connection signal="on_just_finished_typing" from="CanvasLayer/MainControl/TextPanelBottom" to="." method="_on_text_panel_stopped"]
+[connection signal="on_next_panel" from="CanvasLayer/MainControl/TextPanelBottom" to="." method="_on_text_panel_running"]
