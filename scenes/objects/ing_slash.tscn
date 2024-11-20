@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://chyfp3hi0n6tu"]
+
+[ext_resource type="Script" path="res://scripts/behavior_slash_ingredient.gd" id="1_t3nx5"]
+[ext_resource type="Resource" uid="uid://y52fjgxlb84x" path="res://data/ingredients/ingredient_slash.tres" id="2_mjh7m"]
+[ext_resource type="Texture2D" uid="uid://cqk78hf60guip" path="res://assets/sprites/ingredients/raw-slash.png" id="2_twukx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6jeh"]
+size = Vector2(200, 230)
+
+[node name="IngredientSlice" type="RigidBody2D"]
+z_index = 5
+input_pickable = true
+gravity_scale = 1.25
+script = ExtResource("1_t3nx5")
+ingredient_resource = ExtResource("2_mjh7m")
+throw_force_multiplier = 25.0
+throw_max_velocity = 50.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_twukx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y6jeh")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

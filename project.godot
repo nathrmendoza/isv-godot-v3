@@ -15,6 +15,11 @@ run/main_scene="res://scenes/levels/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalPauseManager="*res://scripts/globals/global_pause_manager.gd"
+GlobalPlayerData="*res://scripts/globals/global_player_data.gd"
+
 [display]
 
 window/size/viewport_width=1440
@@ -27,6 +32,14 @@ window/handheld/orientation=1
 [gui]
 
 theme/custom_font="res://assets/fonts/CrimsonPro-VariableFont_wght.ttf"
+
+[input]
+
+click={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(157, 15),"global_position":Vector2(166, 61),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
 
 [rendering]
 

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IngredientContainer" load_steps=4 format=3 uid="uid://dqlo8pmrxrq27"]
+
+[ext_resource type="Texture2D" uid="uid://c135xbo32h57c" path="res://assets/sprites/objects/container-slash.png" id="1_5uouh"]
+[ext_resource type="PackedScene" uid="uid://chyfp3hi0n6tu" path="res://scenes/objects/ing_slash.tscn" id="2_m50vg"]
+[ext_resource type="Script" path="res://data/_models/model_container.gd" id="3_d56no"]
+
+[resource]
+script = ExtResource("3_d56no")
+container_texture = ExtResource("1_5uouh")
+ingredient_id = "slash"
+ingredient_scene = ExtResource("2_m50vg")
+pop_direction = "straight"
+pop_strength = 1200

@@ -4,7 +4,6 @@ class_name Ingredient
 @export var ingredient_id: String
 @export var ingredient_name: String
 @export_multiline var description: String
-@export var ingredient_scene: PackedScene
 
 # STATS
 @export_enum('blunt', 'slice', 'pierce', 'fire', 'ice', 'shock', 'wind', 'heal', 'shield') var effect_type: String = 'blunt'

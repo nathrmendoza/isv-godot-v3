@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://y52fjgxlb84x"]
+
+[ext_resource type="Script" path="res://data/_models/model_ingredient.gd" id="1_wcex5"]
+
+[resource]
+script = ExtResource("1_wcex5")
+ingredient_id = "slash"
+ingredient_name = "Octocle Slashers"
+description = "Lorem ipsum placeholder descirption"
+effect_type = "blunt"
+raw_power = 15.0
+cooked_power = 30.0
+cook_timer = 3.0

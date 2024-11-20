@@ -59,7 +59,7 @@ modulate_color = Color(0.894118, 0.894118, 0.894118, 1)
 
 [resource]
 default_font = ExtResource("1_87qha")
-default_font_size = 56
+default_font_size = 72
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)

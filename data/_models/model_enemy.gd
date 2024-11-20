@@ -3,8 +3,8 @@ class_name Enemy
 
 @export var enemy_id: String
 @export var enemy_name: String
+@export var enemy_title: String
 @export_multiline var enemy_description: String
-@export var enemy_scene: PackedScene
 
 # STATS
 @export var health: float = 100.0
