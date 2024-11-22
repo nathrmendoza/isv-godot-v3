@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ci6g8naqx2d1i"]
+[gd_scene load_steps=37 format=3 uid="uid://ci6g8naqx2d1i"]
 
 [ext_resource type="AudioStream" uid="uid://b7yfkg28dj5ot" path="res://assets/music/BattleMusic.mp3" id="1_afhgh"]
 [ext_resource type="Texture2D" uid="uid://dg0ai31k46ptn" path="res://assets/sprites/background/protoype_level_bg_HD.png" id="1_h408d"]
@@ -8,11 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://c1c5vx14xqurr" path="res://assets/sprites/objects/cart_bottom.png" id="3_3royk"]
 [ext_resource type="Texture2D" uid="uid://cexoq2o70ho0f" path="res://assets/sprites/objects/cart_top.png" id="4_jy3xj"]
 [ext_resource type="Texture2D" uid="uid://njh4enpqyrnc" path="res://assets/sprites/objects/hotpot.png" id="7_72mqj"]
+[ext_resource type="Resource" uid="uid://cv23f1r78aodl" path="res://data/containers/container_wind.tres" id="7_knps5"]
 [ext_resource type="PackedScene" uid="uid://6fhpgculkq28" path="res://scenes/objects/ingredient_container.tscn" id="7_rkhb5"]
 [ext_resource type="Texture2D" uid="uid://dgl83gfnx3nlh" path="res://assets/sprites/objects/animated-oil/oil1.png" id="8_5xklg"]
+[ext_resource type="Resource" uid="uid://b8quylit5xtrd" path="res://data/containers/container_blunt.tres" id="8_7mqdn"]
+[ext_resource type="Resource" uid="uid://bgdbqhjoes230" path="res://data/containers/container_ice.tres" id="8_b1mb5"]
 [ext_resource type="Texture2D" uid="uid://dmotrty3jclcy" path="res://assets/sprites/objects/prep-table.png" id="8_syn3c"]
+[ext_resource type="Resource" uid="uid://ddvtc172ni6nv" path="res://data/containers/container_pierce.tres" id="9_p3af1"]
 [ext_resource type="Texture2D" uid="uid://65aqblegemqt" path="res://assets/sprites/objects/animated-oil/oil2.png" id="9_qjdtc"]
+[ext_resource type="Resource" uid="uid://b2d103qbkr7ps" path="res://data/containers/container_shock.tres" id="9_t015s"]
 [ext_resource type="Texture2D" uid="uid://b1p64tx5hptwe" path="res://assets/sprites/objects/animated-oil/oil3.png" id="10_pfbis"]
+[ext_resource type="Resource" uid="uid://c1s8dknbnvlo0" path="res://data/containers/container_fire.tres" id="10_qcb8x"]
 [ext_resource type="Texture2D" uid="uid://bpjdpoh0vgshd" path="res://assets/sprites/objects/animated-oil/oil4.png" id="11_i1cxx"]
 [ext_resource type="Texture2D" uid="uid://02i3pewy4pvd" path="res://assets/sprites/objects/animated-oil/oil5.png" id="12_ahv26"]
 [ext_resource type="Texture2D" uid="uid://dpbnukxbyescg" path="res://assets/sprites/objects/animated-oil/oil6.png" id="13_df2a1"]
@@ -125,7 +131,6 @@ frame_15/duration = 0.04
 
 [node name="PrototypeLevel" type="Node2D"]
 script = ExtResource("1_jerp5")
-metadata/_edit_horizontal_guides_ = [1057.0, 1498.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -195,6 +200,60 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_f6c57")
 
+[node name="CnWind" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 160.0
+offset_top = -416.0
+offset_right = 160.0
+offset_bottom = -416.0
+grow_vertical = 2
+container_data = ExtResource("7_knps5")
+
+[node name="CnIce" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 160.0
+offset_top = 56.0
+offset_right = 160.0
+offset_bottom = 56.0
+grow_vertical = 2
+container_data = ExtResource("8_b1mb5")
+
+[node name="CnShock" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -416.0
+offset_right = -168.0
+offset_bottom = -416.0
+grow_horizontal = 0
+grow_vertical = 2
+container_data = ExtResource("9_t015s")
+
+[node name="CnFire" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = 56.0
+offset_right = -168.0
+offset_bottom = 56.0
+grow_horizontal = 0
+grow_vertical = 2
+container_data = ExtResource("10_qcb8x")
+
 [node name="CartBottom" type="TextureRect" parent="CartLayer/Cart"]
 layout_mode = 1
 anchors_preset = 7
@@ -209,8 +268,31 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_3royk")
 
-[node name="IngredientContainer" parent="CartLayer/Cart/CartBottom" instance=ExtResource("7_rkhb5")]
-process_mode = 1
+[node name="CnBlunt" parent="CartLayer/Cart/CartBottom" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -376.0
+offset_top = -72.0
+offset_right = -376.0
+offset_bottom = -72.0
+grow_horizontal = 2
+container_data = ExtResource("8_7mqdn")
+
+[node name="CnPierce" parent="CartLayer/Cart/CartBottom" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 320.0
+offset_top = -48.0
+offset_right = 320.0
+offset_bottom = -48.0
+grow_horizontal = 2
+container_data = ExtResource("9_p3af1")
+
+[node name="CnSlash" parent="CartLayer/Cart/CartBottom" instance=ExtResource("7_rkhb5")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -273,6 +355,7 @@ mouse_filter = 2
 texture = ExtResource("4_jy3xj")
 
 [node name="FadeCover" type="ColorRect" parent="CartLayer/Cart"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

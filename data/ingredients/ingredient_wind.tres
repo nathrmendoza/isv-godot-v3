@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://b7ksiu617q46c"]
+
+[ext_resource type="Script" path="res://data/_models/model_ingredient.gd" id="1_0w7cx"]
+
+[resource]
+script = ExtResource("1_0w7cx")
+ingredient_id = "wind"
+ingredient_name = "Blowshrooms"
+description = "Lorem ipsum sid amet."
+effect_type = "wind"
+raw_power = 20.0
+cooked_power = 45.0
+cook_timer = 4.0

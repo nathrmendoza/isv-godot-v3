@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IngredientContainer" load_steps=4 format=3 uid="uid://ddvtc172ni6nv"]
+
+[ext_resource type="Script" path="res://data/_models/model_container.gd" id="1_2dhny"]
+[ext_resource type="Texture2D" uid="uid://c3vwuv07xg41j" path="res://assets/sprites/objects/container-pierce.png" id="1_xo5f3"]
+[ext_resource type="PackedScene" uid="uid://bemq4at1avfag" path="res://scenes/objects/ing_pierce.tscn" id="2_e86dc"]
+
+[resource]
+script = ExtResource("1_2dhny")
+container_texture = ExtResource("1_xo5f3")
+ingredient_id = "pierce"
+ingredient_scene = ExtResource("2_e86dc")
+pop_direction = "straight"
+pop_strength = 1200

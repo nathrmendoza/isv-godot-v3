@@ -2,7 +2,7 @@ extends RigidBody2D
 class_name CoreIngredient
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var collision_body: CollisionShape2D = $CollisionShape2D
+@onready var collision_body: CollisionPolygon2D = $CollisionPolygon2D
 
 var is_dragging: bool = false
 var is_draggable: bool = true
@@ -26,13 +26,13 @@ func _ready() -> void:
 	if _init_validation() == false: queue_free()
 	input_pickable = true
 	viewport_height = get_viewport_rect().size.y
-	offscreen_margin = collision_body.shape.size.y
+	offscreen_margin = _get_polygon_height()
 	get_tree().root.size_changed.connect(_on_viewport_change)
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if is_draggable:
-			if _check_pointer_within_shape(event.global_position):
+			if _is_point_in_polygon(event.global_position):
 				_grabbing_object(event.global_position)
 
 func _physics_process(delta: float) -> void:
@@ -77,9 +77,11 @@ func _finish_cooking():
 	freeze = false
 	_tween_pop_off('right', 500)
 
-func _tween_pop_off(pop_direction: String, pop_strength: int) -> void:
-	set_collision_mask_value(1, false)
-	var rand_x = randi_range(250, 750)
+func _tween_pop_off(pop_direction: String, pop_strength: int, disable_collider: bool = true) -> void:
+	if disable_collider:
+		set_collision_mask_value(1, false)
+	
+	var rand_x = randi_range(250, 500)
 	match pop_direction:
 		'straight':
 			apply_central_impulse(Vector2(0, -pop_strength))
@@ -87,8 +89,10 @@ func _tween_pop_off(pop_direction: String, pop_strength: int) -> void:
 			apply_central_impulse(Vector2(-rand_x, -pop_strength))
 		'right':
 			apply_central_impulse(Vector2(rand_x, -pop_strength))
-	await get_tree().create_timer(2).timeout
-	set_collision_mask_value(1, true)
+	
+	if disable_collider:
+		await get_tree().create_timer(2).timeout
+		set_collision_mask_value(1, true)
 
 func _check_pointer_within_shape(point: Vector2) -> bool:
 	if collision_body.shape:
@@ -109,6 +113,35 @@ func _check_pointer_within_shape(point: Vector2) -> bool:
 				return abs(local_point - circle_center).length() <= collision_body.shape.radius
 	#fallback
 	return false
+
+func _is_point_in_polygon(point: Vector2) -> bool:
+	var local_point = to_local(point)
+	var polygon_points = collision_body.polygon
+	
+	var inside = false
+	var j = polygon_points.size() - 1
+	
+	for i in polygon_points.size():
+		if ((polygon_points[i].y > local_point.y) != (polygon_points[j].y > local_point.y) and
+			local_point.x < (polygon_points[j].x - polygon_points[i].x) * 
+			(local_point.y - polygon_points[i].y) / 
+			(polygon_points[j].y - polygon_points[i].y) + polygon_points[i].x):
+			inside = !inside
+		j = i
+		
+	return inside
+
+func _get_polygon_height() -> float:
+	var polygon_points = collision_body.polygon
+	
+	var min_y = polygon_points[0].y
+	var max_y = polygon_points[0].y
+	
+	for point in polygon_points:
+		min_y = min(min_y, point.y)
+		max_y = max(max_y, point.y)
+	
+	return max_y - min_y
 
 func _on_viewport_change() -> void:
 	viewport_height = get_viewport_rect().size.y

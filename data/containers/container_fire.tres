@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IngredientContainer" load_steps=4 format=3 uid="uid://c1s8dknbnvlo0"]
+
+[ext_resource type="Texture2D" uid="uid://bbg0jh4sbwg11" path="res://assets/sprites/objects/container-fire.png" id="1_sosl7"]
+[ext_resource type="Script" path="res://data/_models/model_container.gd" id="1_wlvca"]
+[ext_resource type="PackedScene" uid="uid://phorwcq82pxk" path="res://scenes/objects/ing_fire.tscn" id="2_acx1t"]
+
+[resource]
+script = ExtResource("1_wlvca")
+container_texture = ExtResource("1_sosl7")
+ingredient_id = "fire"
+ingredient_scene = ExtResource("2_acx1t")
+pop_direction = "left"
+pop_strength = 1250

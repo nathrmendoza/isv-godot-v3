@@ -1,6 +1,6 @@
 [gd_scene load_steps=98 format=3 uid="uid://cpsd6qipli5gg"]
 
-[ext_resource type="Script" path="res://scripts/behavior_enemy.gd" id="1_66x2w"]
+[ext_resource type="Script" path="res://scripts/behavior_def_enemy.gd" id="1_66x2w"]
 [ext_resource type="Texture2D" uid="uid://crwnhiqkr41mu" path="res://assets/sprites/enemies/spr_slithorax/idle/final-0001.png" id="1_cl6yf"]
 [ext_resource type="Resource" uid="uid://833p1rgfqbu" path="res://data/enemies/slithorax_data.tres" id="2_27x72"]
 [ext_resource type="Texture2D" uid="uid://bueqfvon6kqum" path="res://assets/sprites/enemies/spr_slithorax/idle/final-0002.png" id="2_68uik"]

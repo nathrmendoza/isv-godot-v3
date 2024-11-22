@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IngredientContainer" load_steps=4 format=3 uid="uid://cv23f1r78aodl"]
+
+[ext_resource type="Texture2D" uid="uid://320vfupp1hqk" path="res://assets/sprites/objects/container-wind.png" id="1_l6eeb"]
+[ext_resource type="Script" path="res://data/_models/model_container.gd" id="1_v7o1i"]
+[ext_resource type="PackedScene" uid="uid://cu371d665jwnp" path="res://scenes/objects/ing_wind.tscn" id="2_8w51o"]
+
+[resource]
+script = ExtResource("1_v7o1i")
+container_texture = ExtResource("1_l6eeb")
+ingredient_id = "wind"
+ingredient_scene = ExtResource("2_8w51o")
+pop_direction = "right"
+pop_strength = 900

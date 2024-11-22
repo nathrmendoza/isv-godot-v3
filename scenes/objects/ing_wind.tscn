@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu371d665jwnp"]
+
+[ext_resource type="Script" path="res://scripts/behavior_slash_ingredient.gd" id="1_q6shu"]
+[ext_resource type="Resource" uid="uid://b7ksiu617q46c" path="res://data/ingredients/ingredient_wind.tres" id="2_fy6kj"]
+[ext_resource type="Texture2D" uid="uid://cvjg71p05ho23" path="res://assets/sprites/ingredients/raw-wind.png" id="3_0it30"]
+
+[node name="IngredientWind" type="RigidBody2D"]
+z_index = 5
+script = ExtResource("1_q6shu")
+ingredient_resource = ExtResource("2_fy6kj")
+throw_force_multiplier = 25.0
+throw_max_velocity = 50.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_0it30")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1, -94, -50, -62, -87, -12, -100, 11, -72, 31, -19, 38, -7, 62, -18, 72, -37, 71, -40, 85, -17, 95, 16, 86, 28, 67, 24, 37, 65, 34, 87, 28, 99, 14, 76, -34, 40, -78)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

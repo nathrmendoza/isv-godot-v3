@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://cl15yvaja7boy"]
+
+[ext_resource type="Script" path="res://data/_models/model_ingredient.gd" id="1_ulm3v"]
+
+[resource]
+script = ExtResource("1_ulm3v")
+ingredient_id = "fire"
+ingredient_name = "Spicy Poppers"
+description = "Lorem ipsum placeholder descirption"
+effect_type = "fire"
+raw_power = 20.0
+cooked_power = 45.0
+cook_timer = 4.0

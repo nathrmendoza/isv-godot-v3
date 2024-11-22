@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://bwjq3cofp23uk"]
+
+[ext_resource type="Script" path="res://data/_models/model_ingredient.gd" id="1_bspsw"]
+
+[resource]
+script = ExtResource("1_bspsw")
+ingredient_id = "blunt"
+ingredient_name = "Dimble Paws"
+description = "Lorem ipsum placeholder descirption"
+effect_type = "blunt"
+raw_power = 15.0
+cooked_power = 30.0
+cook_timer = 2.5

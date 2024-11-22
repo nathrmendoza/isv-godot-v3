@@ -3,7 +3,7 @@ extends Control
 
 var spawn_ingredient: PackedScene
 var ingredient_stock: int
-var has_overlapping_body: bool = false
+var can_spawn_ingredient: bool = true
 
 @onready var container_texture: TextureRect = $ContainerTexture
 @export var container_data: IngredientContainer:
@@ -17,18 +17,22 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	
 	if _init_validation():
-		_init_container()
+		_init_container.call_deferred()
 
 func _on_container_texture_gui_input(event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		if spawn_ingredient and ingredient_stock > 0 and not has_overlapping_body:
+		if spawn_ingredient and can_spawn_ingredient and ingredient_stock > 0:
+			can_spawn_ingredient = false
 			_tween_pop_ingredient()
 			GlobalPlayerData._remove_ingredient(container_data.ingredient_id, 1)
 			var _ingredient = spawn_ingredient.instantiate()
 			_ingredient.position = Vector2(0,0)
 			add_child(_ingredient)
-			_ingredient._tween_pop_off(container_data.pop_direction, container_data.pop_strength)
+			_ingredient._tween_pop_off(container_data.pop_direction, container_data.pop_strength, false)
+			
+			await get_tree().create_timer(container_data.pop_cooldown).timeout
+			can_spawn_ingredient = true
 
 func _tween_pop_ingredient() -> void:
 	var tween = create_tween()
@@ -36,10 +40,14 @@ func _tween_pop_ingredient() -> void:
 	tween.chain().tween_property(container_texture, "scale", Vector2(1, 1), 0.15).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 
 func _init_container() -> void:
-	# only allow changing of texture in editor
+	# set texture properties
 	container_texture.texture = container_data.container_texture
-	if Engine.is_editor_hint(): return
+	container_texture.size = container_data.container_texture.get_size()
+	container_texture.position = Vector2(-(container_data.container_texture.get_size().x / 2), -(container_data.container_texture.get_size().y / 2))
+	container_texture.pivot_offset = Vector2(container_data.container_texture.get_size().x / 2, container_data.container_texture.get_size().y / 2)
 	
+	#only runs on runtime
+	if Engine.is_editor_hint(): return
 	ingredient_stock = GlobalPlayerData._get_ingredient_amount(container_data.ingredient_id)
 	spawn_ingredient = container_data.ingredient_scene
 
@@ -54,10 +62,3 @@ func _init_validation() -> bool:
 		printerr("Assign a texture to the container resource!")
 		return false
 	return true
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	has_overlapping_body = true
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	has_overlapping_body = false

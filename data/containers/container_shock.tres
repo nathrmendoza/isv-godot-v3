@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IngredientContainer" load_steps=4 format=3 uid="uid://b2d103qbkr7ps"]
+
+[ext_resource type="Script" path="res://data/_models/model_container.gd" id="1_hbidr"]
+[ext_resource type="Texture2D" uid="uid://cpn82xhcfbxkw" path="res://assets/sprites/objects/container-shock.png" id="1_pvulf"]
+[ext_resource type="PackedScene" uid="uid://c6h64fmrx17d2" path="res://scenes/objects/ing_shock.tscn" id="2_g11l6"]
+
+[resource]
+script = ExtResource("1_hbidr")
+container_texture = ExtResource("1_pvulf")
+ingredient_id = "shock"
+ingredient_scene = ExtResource("2_g11l6")
+pop_direction = "left"
+pop_strength = 900

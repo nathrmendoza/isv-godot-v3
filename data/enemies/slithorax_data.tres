@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://833p1rgfqbu"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://833p1rgfqbu"]
 
 [ext_resource type="Script" path="res://data/_models/model_enemy.gd" id="1_3m6lc"]
+[ext_resource type="Script" path="res://data/_models/model_enemy_actions.gd" id="1_en0ek"]
 
 [resource]
 script = ExtResource("1_3m6lc")
-enemy_id = "0001"
+enemy_id = "mob_slithorax"
 enemy_name = "Slithorax"
 enemy_title = "Oculus Serpentis"
 enemy_description = "A fearsome, serpentine enemy with a sleek, snake-like body, Slithorax commands fear with its grotesque, singular eye replacing its head. This malevolent predator uses its hypnotic gaze to paralyze prey and unleash devastating psychic attacks. Agile and relentless, it slithers through darkness, striking swiftly from shadows. Its shimmering scales reflect faint light, making it eerily mesmerizing yet terrifying as it stalks the unwary. Only the bravest dare face the Oculus Serpentis."
-health = 150.0
+health = 575.0
 weakness_type = "slice"
 resistance_type = "blunt"
 weakness_modifier = 0.25
 resistance_modifier = 0.5
+actions = Array[ExtResource("1_en0ek")]([])

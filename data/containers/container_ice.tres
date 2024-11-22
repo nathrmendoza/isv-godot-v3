@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IngredientContainer" load_steps=4 format=3 uid="uid://bgdbqhjoes230"]
+
+[ext_resource type="Texture2D" uid="uid://1oki3fpov1fo" path="res://assets/sprites/objects/container-ice.png" id="1_h3ydo"]
+[ext_resource type="Script" path="res://data/_models/model_container.gd" id="1_jvbsb"]
+[ext_resource type="PackedScene" uid="uid://ccq1wd57poq7h" path="res://scenes/objects/ing_ice.tscn" id="2_urpeo"]
+
+[resource]
+script = ExtResource("1_jvbsb")
+container_texture = ExtResource("1_h3ydo")
+ingredient_id = "ice"
+ingredient_scene = ExtResource("2_urpeo")
+pop_direction = "right"
+pop_strength = 900

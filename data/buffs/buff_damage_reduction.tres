@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Buff" load_steps=2 format=3 uid="uid://bs0gs1ykwkn4h"]
+
+[ext_resource type="Script" path="res://data/_models/model_buff.gd" id="1_x1403"]
+
+[resource]
+script = ExtResource("1_x1403")
+buff_type = "damage_reduction"
+buff_name = "Damage Reduction"
+modifier = 0.15

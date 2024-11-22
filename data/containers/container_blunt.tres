@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IngredientContainer" load_steps=4 format=3 uid="uid://b8quylit5xtrd"]
+
+[ext_resource type="Texture2D" uid="uid://cn05nknx57ktu" path="res://assets/sprites/objects/container-blunt.png" id="1_fiika"]
+[ext_resource type="Script" path="res://data/_models/model_container.gd" id="1_gnn0d"]
+[ext_resource type="PackedScene" uid="uid://c73q1jfdf1r1u" path="res://scenes/objects/ing_blunt.tscn" id="2_xbu1j"]
+
+[resource]
+script = ExtResource("1_gnn0d")
+container_texture = ExtResource("1_fiika")
+ingredient_id = "blunt"
+ingredient_scene = ExtResource("2_xbu1j")
+pop_direction = "straight"
+pop_strength = 1200

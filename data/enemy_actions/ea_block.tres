@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyActions" load_steps=2 format=3 uid="uid://iwjpifd8xxml"]
+
+[ext_resource type="Script" path="res://data/_models/model_enemy_actions.gd" id="1_5oy5v"]
+
+[resource]
+script = ExtResource("1_5oy5v")
+action_name = "Block"
+action_description = "Reduces incoming damage"
+damage_power = 15
+debuff_target = "player"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyActions" load_steps=2 format=3 uid="uid://c2sub3278usne"]
+
+[ext_resource type="Script" path="res://data/_models/model_enemy_actions.gd" id="1_ltui7"]
+
+[resource]
+script = ExtResource("1_ltui7")
+action_name = "Tail Whip"
+action_description = ""
+damage_power = 25
+debuff_target = "player"

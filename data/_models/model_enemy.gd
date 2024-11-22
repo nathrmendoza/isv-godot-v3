@@ -14,3 +14,6 @@ class_name Enemy
 @export_enum('blunt', 'slice', 'pierce', 'fire', 'ice', 'shock', 'wind', 'none') var resistance_type: String = 'none'
 @export var weakness_modifier: float = 0.0
 @export var resistance_modifier: float = 0.0
+
+# ACTIONS
+@export var actions: Array[EnemyActions]
