@@ -7,14 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cpsd6qipli5gg" path="res://scenes/enemies/enemy_slithorax.tscn" id="2_whljd"]
 [ext_resource type="Texture2D" uid="uid://c1c5vx14xqurr" path="res://assets/sprites/objects/cart_bottom.png" id="3_3royk"]
 [ext_resource type="Texture2D" uid="uid://cexoq2o70ho0f" path="res://assets/sprites/objects/cart_top.png" id="4_jy3xj"]
-[ext_resource type="Resource" uid="uid://cv23f1r78aodl" path="res://data/containers/container_wind.tres" id="7_knps5"]
-[ext_resource type="PackedScene" uid="uid://6fhpgculkq28" path="res://scenes/objects/ingredient_container.tscn" id="7_rkhb5"]
-[ext_resource type="Resource" uid="uid://b8quylit5xtrd" path="res://data/containers/container_blunt.tres" id="8_7mqdn"]
-[ext_resource type="Resource" uid="uid://bgdbqhjoes230" path="res://data/containers/container_ice.tres" id="8_b1mb5"]
+[ext_resource type="PackedScene" uid="uid://b8lxfreciffns" path="res://scenes/objects/containers/container_ice.tscn" id="6_q61ow"]
+[ext_resource type="PackedScene" uid="uid://degqcid6ir78" path="res://scenes/objects/containers/container_wind.tscn" id="7_v10hg"]
+[ext_resource type="PackedScene" uid="uid://boytsauebidu" path="res://scenes/objects/containers/container_shock.tscn" id="8_4573p"]
 [ext_resource type="Texture2D" uid="uid://dmotrty3jclcy" path="res://assets/sprites/objects/prep-table.png" id="8_syn3c"]
-[ext_resource type="Resource" uid="uid://ddvtc172ni6nv" path="res://data/containers/container_pierce.tres" id="9_p3af1"]
-[ext_resource type="Resource" uid="uid://b2d103qbkr7ps" path="res://data/containers/container_shock.tres" id="9_t015s"]
-[ext_resource type="Resource" uid="uid://c1s8dknbnvlo0" path="res://data/containers/container_fire.tres" id="10_qcb8x"]
+[ext_resource type="PackedScene" uid="uid://dg8mhjpmh5hgf" path="res://scenes/objects/containers/container_fire.tscn" id="9_hh1qf"]
 [ext_resource type="Texture2D" uid="uid://clhgvxvm38ema" path="res://assets/sprites/ui/icon-heart.png" id="12_llg26"]
 [ext_resource type="Texture2D" uid="uid://bkifedrhrhqd8" path="res://assets/sprites/ui/bar-player.png" id="13_onvbu"]
 [ext_resource type="Texture2D" uid="uid://djxl1awm7q0d" path="res://assets/sprites/ui/icon-armor.png" id="14_dyl18"]
@@ -23,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://b4vd85dk84btp" path="res://assets/sprites/ui/bar-player-progress.png" id="15_4ehwi"]
 [ext_resource type="Texture2D" uid="uid://bj505ataosdsk" path="res://assets/sprites/ui/bar-player-health-fill.png" id="16_3glri"]
 [ext_resource type="Texture2D" uid="uid://fb2hfvthsf13" path="res://assets/sprites/ui/bar-player-armor-fill.png" id="18_t262r"]
+[ext_resource type="PackedScene" uid="uid://mmw7iqwa6pm" path="res://scenes/objects/containers/container_slash.tscn" id="20_1p4j2"]
+[ext_resource type="PackedScene" uid="uid://cxpverk816swj" path="res://scenes/objects/containers/container_blunt.tscn" id="20_fmwl5"]
+[ext_resource type="PackedScene" uid="uid://kcsq7ox5qo1" path="res://scenes/objects/containers/container_pierce.tscn" id="20_plt8t"]
 
 [sub_resource type="Animation" id="Animation_h0g7l"]
 length = 0.001
@@ -86,7 +86,9 @@ _data = {
 }
 
 [node name="PrototypeLevel" type="Node2D"]
+position = Vector2(-105, -139)
 script = ExtResource("1_jerp5")
+has_intro_animation = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -130,7 +132,7 @@ metadata/_edit_lock_ = true
 follow_viewport_enabled = true
 
 [node name="EnemySlithorax" parent="ActionLayer" instance=ExtResource("2_whljd")]
-position = Vector2(0, 248)
+position = Vector2(-56, 0)
 
 [node name="CartLayer" type="CanvasLayer" parent="."]
 
@@ -156,59 +158,51 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_f6c57")
 
-[node name="CnWind" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_rkhb5")]
+[node name="ContainerIce" parent="CartLayer/Cart/CartPost" instance=ExtResource("6_q61ow")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 160.0
-offset_top = -416.0
-offset_right = 160.0
-offset_bottom = -416.0
+offset_left = 168.0
+offset_right = 168.0
 grow_vertical = 2
-container_data = ExtResource("7_knps5")
 
-[node name="CnIce" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_rkhb5")]
+[node name="ContainerWind" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_v10hg")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 160.0
-offset_top = 56.0
-offset_right = 160.0
-offset_bottom = 56.0
+offset_left = 168.0
+offset_top = -448.0
+offset_right = 168.0
+offset_bottom = -448.0
 grow_vertical = 2
-container_data = ExtResource("8_b1mb5")
 
-[node name="CnShock" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_rkhb5")]
+[node name="ContainerShock" parent="CartLayer/Cart/CartPost" instance=ExtResource("8_4573p")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -168.0
-offset_top = -416.0
-offset_right = -168.0
-offset_bottom = -416.0
+offset_left = -160.0
+offset_top = -448.0
+offset_right = -160.0
+offset_bottom = -448.0
 grow_horizontal = 0
 grow_vertical = 2
-container_data = ExtResource("9_t015s")
 
-[node name="CnFire" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_rkhb5")]
+[node name="ContainerFire" parent="CartLayer/Cart/CartPost" instance=ExtResource("9_hh1qf")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -168.0
-offset_top = 56.0
-offset_right = -168.0
-offset_bottom = 56.0
+offset_left = -160.0
+offset_right = -160.0
 grow_horizontal = 0
 grow_vertical = 2
-container_data = ExtResource("10_qcb8x")
 
 [node name="CartTop" type="TextureRect" parent="CartLayer/Cart"]
 layout_mode = 1
@@ -317,37 +311,35 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_3royk")
 
-[node name="CnBlunt" parent="CartLayer/Cart/CartBottom" instance=ExtResource("7_rkhb5")]
+[node name="ContainerBlunt" parent="CartLayer/Cart/CartBottom" instance=ExtResource("20_fmwl5")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -376.0
-offset_top = -72.0
-offset_right = -376.0
-offset_bottom = -72.0
+offset_left = -368.0
+offset_top = -24.0
+offset_right = -368.0
+offset_bottom = -24.0
 grow_horizontal = 2
-container_data = ExtResource("8_7mqdn")
 
-[node name="CnPierce" parent="CartLayer/Cart/CartBottom" instance=ExtResource("7_rkhb5")]
+[node name="ContainerPierce" parent="CartLayer/Cart/CartBottom" instance=ExtResource("20_plt8t")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 320.0
-offset_top = -48.0
-offset_right = 320.0
-offset_bottom = -48.0
+offset_left = 336.0
+offset_top = -8.0
+offset_right = 336.0
+offset_bottom = -8.0
 grow_horizontal = 2
-container_data = ExtResource("9_p3af1")
 
-[node name="CnSlash" parent="CartLayer/Cart/CartBottom" instance=ExtResource("7_rkhb5")]
+[node name="ContainerSlash" parent="CartLayer/Cart/CartBottom" instance=ExtResource("20_1p4j2")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = -72.0
-offset_bottom = -72.0
+offset_top = -16.0
+offset_bottom = -16.0
 grow_horizontal = 2
 
 [node name="Hotpot" parent="CartLayer/Cart/CartBottom" instance=ExtResource("14_oakrp")]

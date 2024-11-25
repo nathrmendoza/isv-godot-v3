@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://degqcid6ir78"]
+
+[ext_resource type="Script" path="res://scripts/bhv_def_container.gd" id="1_aie2w"]
+[ext_resource type="Resource" uid="uid://cv23f1r78aodl" path="res://data/containers/container_wind.tres" id="2_hvfpu"]
+[ext_resource type="Texture2D" uid="uid://320vfupp1hqk" path="res://assets/sprites/objects/container-wind.png" id="3_s4v62"]
+
+[node name="ContainerWind" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_aie2w")
+container_data = ExtResource("2_hvfpu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -164.0
+offset_top = -137.0
+offset_right = 165.0
+offset_bottom = 138.0
+pivot_offset = Vector2(164, 137)
+texture = ExtResource("3_s4v62")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-5, -136, 102, -134, 111, -125, 107, -52, 130, 11, 156, 44, 166, 90, 157, 121, 139, 133, -2, 138, -110, 138, -146, 126, -163, 97, -156, 58, -125, 10, -107, -52, -112, -122, -101, -136)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

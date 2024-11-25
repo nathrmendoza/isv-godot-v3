@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://boytsauebidu"]
+
+[ext_resource type="Script" path="res://scripts/bhv_def_container.gd" id="1_p1mtw"]
+[ext_resource type="Resource" uid="uid://b2d103qbkr7ps" path="res://data/containers/container_shock.tres" id="2_vwrri"]
+[ext_resource type="Texture2D" uid="uid://cpn82xhcfbxkw" path="res://assets/sprites/objects/container-shock.png" id="3_fbtdl"]
+
+[node name="ContainerShock" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_p1mtw")
+container_data = ExtResource("2_vwrri")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -157.0
+offset_top = -157.0
+offset_right = 157.0
+offset_bottom = 158.0
+pivot_offset = Vector2(157, 157)
+texture = ExtResource("3_fbtdl")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(1, -156, 78, -155, 97, -140, 113, -108, 148, -88, 157, 24, 149, 121, 142, 142, 114, 156, -101, 156, -133, 149, -148, 130, -155, 19, -147, -71, -103, -116, -93, -149, -61, -157)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

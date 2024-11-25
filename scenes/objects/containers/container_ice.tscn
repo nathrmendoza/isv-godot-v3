@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8lxfreciffns"]
+
+[ext_resource type="Script" path="res://scripts/bhv_def_container.gd" id="1_5a460"]
+[ext_resource type="Resource" uid="uid://bgdbqhjoes230" path="res://data/containers/container_ice.tres" id="2_p72mp"]
+[ext_resource type="Texture2D" uid="uid://1oki3fpov1fo" path="res://assets/sprites/objects/container-ice.png" id="3_nc61m"]
+
+[node name="ContainerIce" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_5a460")
+container_data = ExtResource("2_p72mp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -163.0
+offset_top = -182.0
+offset_right = 163.0
+offset_bottom = 183.0
+pivot_offset = Vector2(163, 182)
+texture = ExtResource("3_nc61m")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -182, 142, -164, 129, -139, 162, -65, 43, 141, 0, 182, -47, 137, -163, -64, -123, -139, -133, -167)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxpverk816swj"]
+
+[ext_resource type="Script" path="res://scripts/bhv_def_container.gd" id="1_urnok"]
+[ext_resource type="Resource" uid="uid://b8quylit5xtrd" path="res://data/containers/container_blunt.tres" id="2_6eyi2"]
+[ext_resource type="Texture2D" uid="uid://cn05nknx57ktu" path="res://assets/sprites/objects/container-blunt.png" id="3_fy1p4"]
+
+[node name="ContainerBlunt" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_urnok")
+container_data = ExtResource("2_6eyi2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -185.0
+offset_top = -196.0
+offset_right = 186.0
+offset_bottom = 196.0
+pivot_offset = Vector2(185, 196)
+texture = ExtResource("3_fy1p4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-1, -194, 124, -195, 139, -185, 135, -126, 171, -99, 177, -73, 176, 116, 187, 127, 170, 176, 149, 192, -127, 195, -162, 187, -177, 166, -185, 127, -174, 117, -171, -84, -158, -109, -131, -126, -130, -183, -113, -195)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

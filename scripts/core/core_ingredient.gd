@@ -34,7 +34,8 @@ func _ready() -> void:
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if is_draggable:
-			if _is_point_in_polygon(event.global_position):
+			if UtilsInputQueries.check_topmost_clicked(self, event.global_position) and _is_point_in_polygon(event.global_position):
+				get_viewport().set_input_as_handled()
 				_grabbing_object(event.global_position)
 
 func _physics_process(delta: float) -> void:
