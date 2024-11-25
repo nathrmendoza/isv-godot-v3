@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalPauseManager="*res://scripts/globals/global_pause_manager.gd"
 GlobalPlayerData="*res://scripts/globals/global_player_data.gd"
+GlobalLevelData="*res://scripts/globals/global_level_data.gd"
 
 [display]
 

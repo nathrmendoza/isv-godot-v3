@@ -1,20 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccq1wd57poq7h"]
+[gd_scene load_steps=8 format=3 uid="uid://ccq1wd57poq7h"]
 
-[ext_resource type="Script" path="res://scripts/behavior_slash_ingredient.gd" id="1_t0l3t"]
+[ext_resource type="Script" path="res://scripts/behavior_def_ingredient.gd" id="1_t0l3t"]
 [ext_resource type="Resource" uid="uid://dmp7loqbbb0xq" path="res://data/ingredients/ingredient_ice.tres" id="2_mepj3"]
+[ext_resource type="Shader" path="res://scripts/shaders/shaders_ingredient.gdshader" id="3_atkxn"]
 [ext_resource type="Texture2D" uid="uid://cb3u0gsnm5f4k" path="res://assets/sprites/ingredients/raw-ice.png" id="3_t34s4"]
+[ext_resource type="Texture2D" uid="uid://deruscl8qoscs" path="res://assets/noise-filter.jpg" id="4_sjhc2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aknig"]
+shader = ExtResource("3_atkxn")
+shader_parameter/browning_noise_amount = 0.0
+shader_parameter/sizzle_amount = 0.0
+shader_parameter/bubble_amount = 0.0
+shader_parameter/heat_amount = 0.0
+shader_parameter/time = null
+shader_parameter/noise_texture = ExtResource("4_sjhc2")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xh8d8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_t34s4")
+}],
+"loop": true,
+"name": &"raw",
+"speed": 5.0
+}]
 
 [node name="IngredientIce" type="RigidBody2D"]
 z_index = 5
 input_pickable = true
 gravity_scale = 1.25
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_t0l3t")
 ingredient_resource = ExtResource("2_mepj3")
 throw_force_multiplier = 25.0
 throw_max_velocity = 50.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_t34s4")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_aknig")
+sprite_frames = SubResource("SpriteFrames_xh8d8")
+animation = &"raw"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-56, -63, -77, 0, -49, 74, -24, 111, 38, 46, 79, -22, 66, -85, 18, -105, 6, -98, -3, -115, -14, -102, -11, -79, -33, -46)

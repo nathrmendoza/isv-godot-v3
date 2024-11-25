@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://6fhpgculkq28"]
+[gd_scene load_steps=5 format=3 uid="uid://6fhpgculkq28"]
 
 [ext_resource type="Script" path="res://scripts/behavior_container.gd" id="1_id86q"]
 [ext_resource type="Resource" uid="uid://dqlo8pmrxrq27" path="res://data/containers/container_slash.tres" id="2_6sc17"]
 [ext_resource type="Texture2D" uid="uid://c135xbo32h57c" path="res://assets/sprites/objects/container-slash.png" id="3_5k1k8"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8wr4"]
+size = Vector2(493, 451)
+
 [node name="IngredientContainer" type="Control"]
 process_mode = 1
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("1_id86q")
 container_data = ExtResource("2_6sc17")
 
@@ -25,6 +29,12 @@ offset_bottom = 225.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(246.5, 225.5)
+mouse_filter = 2
 texture = ExtResource("3_5k1k8")
 
-[connection signal="gui_input" from="ContainerTexture" to="." method="_on_container_texture_gui_input"]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_f8wr4")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_container_texture_gui_input"]

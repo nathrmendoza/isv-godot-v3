@@ -8,6 +8,7 @@ class_name Enemy
 
 # STATS
 @export var health: float = 100.0
+@export var speed: float = 14.0
 # PLAYER ATTACKS THAT DEAL MORE DAMAGE - use weakness_modifier
 @export_enum('blunt', 'slice', 'pierce', 'fire', 'ice', 'shock', 'wind', 'none') var weakness_type: String = 'none'
 # PLAYER ATTACKS THAT DEALS LESS DAMAGE - use resistance_modifier

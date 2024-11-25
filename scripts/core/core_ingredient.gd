@@ -1,8 +1,9 @@
 extends RigidBody2D
 class_name CoreIngredient
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var collision_body: CollisionPolygon2D = $CollisionPolygon2D
+@onready var shader_material: ShaderMaterial = sprite.material
 
 var is_dragging: bool = false
 var is_draggable: bool = true
@@ -17,6 +18,7 @@ var pointer_velocity: Vector2
 var offscreen_margin: float
 var viewport_height: float
 
+var is_cooking: bool = false
 var is_cooked: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -45,16 +47,21 @@ func _physics_process(delta: float) -> void:
 			pointer_velocity = pointer_velocity.limit_length(throw_max_velocity)
 			last_pointer_position = current_pointer_position
 		elif Input.is_action_just_released('click'):
+			GlobalLevelData.toggle_player_is_grabbing(false)
 			is_dragging = false
 			freeze = false
 			apply_central_impulse(pointer_velocity * throw_force_multiplier)
-			
+	
+	if is_cooking:
+		shader_material.set_shader_parameter("time", Time.get_ticks_msec() / 1000.0)
+		
 	#remove if below boundary
 	if global_position.y > viewport_height + offscreen_margin:
 		queue_free()
 
 func _grabbing_object(pointer_position: Vector2) -> void:
 	if not is_dragging:
+		GlobalLevelData.toggle_player_is_grabbing(true)
 		is_dragging = true
 		drag_start = pointer_position - global_position
 		last_pointer_position = pointer_position
@@ -62,24 +69,27 @@ func _grabbing_object(pointer_position: Vector2) -> void:
 
 func _start_cooking(cooking_position: Vector2):
 	if not is_cooked:
+		is_cooking = true
 		is_draggable = false
 		global_position = cooking_position
 		set_deferred('freeze', true)
-		#disable colliding
-		set_collision_mask_value(1, false)
+		#collision_body.disabled = true
 		hide()
 
 func _finish_cooking():
 	show()
+	is_cooking = false
 	is_cooked = true
 	is_draggable = true
-	sprite.animation = 'cooked'
+	#sprite.animation = 'cooked'
 	freeze = false
-	_tween_pop_off('right', 500)
+	_tween_pop_off('right', 1200)
+	#collision_body.disabled = false
 
 func _tween_pop_off(pop_direction: String, pop_strength: int, disable_collider: bool = true) -> void:
 	if disable_collider:
 		set_collision_mask_value(1, false)
+		#collision_body.disabled = true
 	
 	var rand_x = randi_range(250, 500)
 	match pop_direction:
@@ -93,6 +103,7 @@ func _tween_pop_off(pop_direction: String, pop_strength: int, disable_collider: 
 	if disable_collider:
 		await get_tree().create_timer(2).timeout
 		set_collision_mask_value(1, true)
+		#collision_body.disabled = false
 
 func _check_pointer_within_shape(point: Vector2) -> bool:
 	if collision_body.shape:
@@ -143,11 +154,14 @@ func _get_polygon_height() -> float:
 	
 	return max_y - min_y
 
+func _get_anim_texture(state: String) -> Texture2D:
+	var sprite_frames = sprite.get_sprite_frames()
+	return sprite_frames.get_frame_texture(state, 0)
+
 func _on_viewport_change() -> void:
 	viewport_height = get_viewport_rect().size.y
 
 func _init_validation() -> bool:
 	if ingredient_resource == null:
-		printerr("Assign an ingredient resource to this instance!")
 		return false
 	return true

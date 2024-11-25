@@ -7,8 +7,6 @@ class_name CoreEnemy
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var enemy_ui: Control = $AnimatedSprite2D/EnemyUI
 
-var health: float
-
 func _ready() -> void:
 	_hide_seeable()
 	
@@ -23,14 +21,6 @@ func _ready() -> void:
 	
 	await anim_player.animation_finished
 	sprite.play()
-
-func _take_damage(amount: float) -> void:
-	health -= amount
-	if health <= 0:
-		_die()
-
-func _die() -> void:
-	queue_free()
 
 func _hide_seeable() -> void:
 	sprite.modulate = Color(1,1,1,0)

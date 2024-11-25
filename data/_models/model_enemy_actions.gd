@@ -8,3 +8,5 @@ class_name EnemyActions
 @export var buff: Buff = null
 @export var debuff: Debuff = null
 @export_enum('monster', 'player') var debuff_target = 'player'
+
+@export_enum('attacking', 'attacking_alt', 'buffing', 'special') var animation_state = 'attacking'

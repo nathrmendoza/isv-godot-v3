@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ci6g8naqx2d1i"]
+[gd_scene load_steps=27 format=3 uid="uid://ci6g8naqx2d1i"]
 
 [ext_resource type="AudioStream" uid="uid://b7yfkg28dj5ot" path="res://assets/music/BattleMusic.mp3" id="1_afhgh"]
 [ext_resource type="Texture2D" uid="uid://dg0ai31k46ptn" path="res://assets/sprites/background/protoype_level_bg_HD.png" id="1_h408d"]
@@ -7,31 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://cpsd6qipli5gg" path="res://scenes/enemies/enemy_slithorax.tscn" id="2_whljd"]
 [ext_resource type="Texture2D" uid="uid://c1c5vx14xqurr" path="res://assets/sprites/objects/cart_bottom.png" id="3_3royk"]
 [ext_resource type="Texture2D" uid="uid://cexoq2o70ho0f" path="res://assets/sprites/objects/cart_top.png" id="4_jy3xj"]
-[ext_resource type="Texture2D" uid="uid://njh4enpqyrnc" path="res://assets/sprites/objects/hotpot.png" id="7_72mqj"]
 [ext_resource type="Resource" uid="uid://cv23f1r78aodl" path="res://data/containers/container_wind.tres" id="7_knps5"]
 [ext_resource type="PackedScene" uid="uid://6fhpgculkq28" path="res://scenes/objects/ingredient_container.tscn" id="7_rkhb5"]
-[ext_resource type="Texture2D" uid="uid://dgl83gfnx3nlh" path="res://assets/sprites/objects/animated-oil/oil1.png" id="8_5xklg"]
 [ext_resource type="Resource" uid="uid://b8quylit5xtrd" path="res://data/containers/container_blunt.tres" id="8_7mqdn"]
 [ext_resource type="Resource" uid="uid://bgdbqhjoes230" path="res://data/containers/container_ice.tres" id="8_b1mb5"]
 [ext_resource type="Texture2D" uid="uid://dmotrty3jclcy" path="res://assets/sprites/objects/prep-table.png" id="8_syn3c"]
 [ext_resource type="Resource" uid="uid://ddvtc172ni6nv" path="res://data/containers/container_pierce.tres" id="9_p3af1"]
-[ext_resource type="Texture2D" uid="uid://65aqblegemqt" path="res://assets/sprites/objects/animated-oil/oil2.png" id="9_qjdtc"]
 [ext_resource type="Resource" uid="uid://b2d103qbkr7ps" path="res://data/containers/container_shock.tres" id="9_t015s"]
-[ext_resource type="Texture2D" uid="uid://b1p64tx5hptwe" path="res://assets/sprites/objects/animated-oil/oil3.png" id="10_pfbis"]
 [ext_resource type="Resource" uid="uid://c1s8dknbnvlo0" path="res://data/containers/container_fire.tres" id="10_qcb8x"]
-[ext_resource type="Texture2D" uid="uid://bpjdpoh0vgshd" path="res://assets/sprites/objects/animated-oil/oil4.png" id="11_i1cxx"]
-[ext_resource type="Texture2D" uid="uid://02i3pewy4pvd" path="res://assets/sprites/objects/animated-oil/oil5.png" id="12_ahv26"]
-[ext_resource type="Texture2D" uid="uid://dpbnukxbyescg" path="res://assets/sprites/objects/animated-oil/oil6.png" id="13_df2a1"]
-[ext_resource type="Texture2D" uid="uid://baknoafccwmjj" path="res://assets/sprites/objects/animated-oil/oil7.png" id="14_sv736"]
-[ext_resource type="Texture2D" uid="uid://bc7hfw6tfoqn" path="res://assets/sprites/objects/animated-oil/oil8.png" id="15_0ec6k"]
-[ext_resource type="Texture2D" uid="uid://ciicrmhewkx1" path="res://assets/sprites/objects/animated-oil/oil9.png" id="16_n5pkk"]
-[ext_resource type="Texture2D" uid="uid://jgucgrafceq0" path="res://assets/sprites/objects/animated-oil/oil10.png" id="17_u04ss"]
-[ext_resource type="Texture2D" uid="uid://coyklkujo04nc" path="res://assets/sprites/objects/animated-oil/oil11.png" id="18_lc2jd"]
-[ext_resource type="Texture2D" uid="uid://qsiri3i3dh04" path="res://assets/sprites/objects/animated-oil/oil12.png" id="19_fe4uo"]
-[ext_resource type="Texture2D" uid="uid://dilr2g8rccc1n" path="res://assets/sprites/objects/animated-oil/oil13.png" id="20_ylvhl"]
-[ext_resource type="Texture2D" uid="uid://3dp1xudpiff0" path="res://assets/sprites/objects/animated-oil/oil14.png" id="21_efh04"]
-[ext_resource type="Texture2D" uid="uid://dg7iuhvgfc5br" path="res://assets/sprites/objects/animated-oil/oil15.png" id="22_oejqh"]
-[ext_resource type="Texture2D" uid="uid://dgd7xwu2lu7lp" path="res://assets/sprites/objects/animated-oil/oil16.png" id="23_iwaen"]
+[ext_resource type="Texture2D" uid="uid://clhgvxvm38ema" path="res://assets/sprites/ui/icon-heart.png" id="12_llg26"]
+[ext_resource type="Texture2D" uid="uid://bkifedrhrhqd8" path="res://assets/sprites/ui/bar-player.png" id="13_onvbu"]
+[ext_resource type="Texture2D" uid="uid://djxl1awm7q0d" path="res://assets/sprites/ui/icon-armor.png" id="14_dyl18"]
+[ext_resource type="PackedScene" uid="uid://xbqn5yix0yeg" path="res://scenes/objects/hotpot.tscn" id="14_oakrp"]
+[ext_resource type="Texture2D" uid="uid://3mcu7s18ufql" path="res://assets/sprites/ui/bar-player-background.png" id="14_rqy66"]
+[ext_resource type="Texture2D" uid="uid://b4vd85dk84btp" path="res://assets/sprites/ui/bar-player-progress.png" id="15_4ehwi"]
+[ext_resource type="Texture2D" uid="uid://bj505ataosdsk" path="res://assets/sprites/ui/bar-player-health-fill.png" id="16_3glri"]
+[ext_resource type="Texture2D" uid="uid://fb2hfvthsf13" path="res://assets/sprites/ui/bar-player-armor-fill.png" id="18_t262r"]
 
 [sub_resource type="Animation" id="Animation_h0g7l"]
 length = 0.001
@@ -93,41 +84,6 @@ _data = {
 "RESET": SubResource("Animation_h0g7l"),
 "level_entry_anim": SubResource("Animation_vxyil")
 }
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_8p4xy"]
-frames = 16
-frame_0/texture = ExtResource("8_5xklg")
-frame_0/duration = 0.02
-frame_1/texture = ExtResource("9_qjdtc")
-frame_1/duration = 0.04
-frame_2/texture = ExtResource("10_pfbis")
-frame_2/duration = 0.04
-frame_3/texture = ExtResource("11_i1cxx")
-frame_3/duration = 0.04
-frame_4/texture = ExtResource("12_ahv26")
-frame_4/duration = 0.04
-frame_5/texture = ExtResource("13_df2a1")
-frame_5/duration = 0.04
-frame_6/texture = ExtResource("14_sv736")
-frame_6/duration = 0.04
-frame_7/texture = ExtResource("15_0ec6k")
-frame_7/duration = 0.04
-frame_8/texture = ExtResource("16_n5pkk")
-frame_8/duration = 0.04
-frame_9/texture = ExtResource("17_u04ss")
-frame_9/duration = 0.04
-frame_10/texture = ExtResource("18_lc2jd")
-frame_10/duration = 0.04
-frame_11/texture = ExtResource("19_fe4uo")
-frame_11/duration = 0.04
-frame_12/texture = ExtResource("20_ylvhl")
-frame_12/duration = 0.04
-frame_13/texture = ExtResource("21_efh04")
-frame_13/duration = 0.04
-frame_14/texture = ExtResource("22_oejqh")
-frame_14/duration = 0.04
-frame_15/texture = ExtResource("23_iwaen")
-frame_15/duration = 0.04
 
 [node name="PrototypeLevel" type="Node2D"]
 script = ExtResource("1_jerp5")
@@ -254,6 +210,99 @@ grow_horizontal = 0
 grow_vertical = 2
 container_data = ExtResource("10_qcb8x")
 
+[node name="CartTop" type="TextureRect" parent="CartLayer/Cart"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -720.0
+offset_right = 720.0
+offset_bottom = 259.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("4_jy3xj")
+
+[node name="PlayerUI" type="Control" parent="CartLayer/Cart/CartTop"]
+anchors_preset = 0
+offset_left = 56.0
+offset_top = 64.0
+offset_right = 96.0
+offset_bottom = 104.0
+metadata/_edit_group_ = true
+
+[node name="PlayerHealth2" type="HBoxContainer" parent="CartLayer/Cart/CartTop/PlayerUI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -65.0
+offset_right = 573.0
+offset_bottom = 17.0
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="HeartIcon" type="TextureRect" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerHealth2"]
+layout_mode = 2
+texture = ExtResource("12_llg26")
+stretch_mode = 3
+
+[node name="HealthBarBG" type="TextureRect" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerHealth2"]
+layout_mode = 2
+texture = ExtResource("13_onvbu")
+stretch_mode = 3
+
+[node name="HealthBarProgress" type="TextureProgressBar" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerHealth2/HealthBarBG"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 20.0
+offset_right = 436.0
+offset_bottom = 62.0
+value = 75.0
+texture_under = ExtResource("14_rqy66")
+texture_progress = ExtResource("15_4ehwi")
+
+[node name="HealthBarFill" type="TextureProgressBar" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerHealth2/HealthBarBG/HealthBarProgress"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 60.0
+texture_progress = ExtResource("16_3glri")
+
+[node name="PlayerArmor" type="HBoxContainer" parent="CartLayer/Cart/CartTop/PlayerUI"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 35.0
+offset_right = 573.0
+offset_bottom = 132.0
+theme_override_constants/separation = 32
+
+[node name="ArmorIcon" type="TextureRect" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerArmor"]
+layout_mode = 2
+texture = ExtResource("14_dyl18")
+stretch_mode = 3
+
+[node name="ArmorBarBG" type="TextureRect" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerArmor"]
+layout_mode = 2
+texture = ExtResource("13_onvbu")
+stretch_mode = 5
+
+[node name="ArmorBarProgress" type="TextureProgressBar" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerArmor/ArmorBarBG"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 28.0
+offset_right = 436.0
+offset_bottom = 70.0
+value = 75.0
+texture_under = ExtResource("14_rqy66")
+texture_progress = ExtResource("15_4ehwi")
+
+[node name="ArmorBarFill" type="TextureProgressBar" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerArmor/ArmorBarBG/ArmorBarProgress"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 60.0
+texture_progress = ExtResource("18_t262r")
+
 [node name="CartBottom" type="TextureRect" parent="CartLayer/Cart"]
 layout_mode = 1
 anchors_preset = 7
@@ -301,31 +350,16 @@ offset_top = -72.0
 offset_bottom = -72.0
 grow_horizontal = 2
 
-[node name="Hotpot" type="TextureRect" parent="CartLayer/Cart/CartBottom"]
+[node name="Hotpot" parent="CartLayer/Cart/CartBottom" instance=ExtResource("14_oakrp")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = -681.0
-offset_right = 899.0
+offset_left = 18.0
+offset_top = -723.0
+offset_right = 892.0
+offset_bottom = -42.0
 grow_vertical = 0
-texture = ExtResource("7_72mqj")
-
-[node name="TextureRect" type="TextureRect" parent="CartLayer/Cart/CartBottom/Hotpot"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -375.0
-offset_top = -290.0
-offset_right = 375.0
-offset_bottom = 130.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AnimatedTexture_8p4xy")
 
 [node name="Prepboard" type="TextureRect" parent="CartLayer/Cart/CartBottom"]
 layout_mode = 1
@@ -341,18 +375,6 @@ offset_bottom = -32.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("8_syn3c")
-
-[node name="CartTop" type="TextureRect" parent="CartLayer/Cart"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -720.0
-offset_right = 720.0
-offset_bottom = 259.0
-grow_horizontal = 2
-mouse_filter = 2
-texture = ExtResource("4_jy3xj")
 
 [node name="FadeCover" type="ColorRect" parent="CartLayer/Cart"]
 visible = false

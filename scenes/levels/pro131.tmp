@@ -1,0 +1,300 @@
+[gd_scene load_steps=20 format=3 uid="uid://ci6g8naqx2d1i"]
+
+[ext_resource type="AudioStream" uid="uid://b7yfkg28dj5ot" path="res://assets/music/BattleMusic.mp3" id="1_afhgh"]
+[ext_resource type="Texture2D" uid="uid://dg0ai31k46ptn" path="res://assets/sprites/background/protoype_level_bg_HD.png" id="1_h408d"]
+[ext_resource type="Script" path="res://scripts/controller_game_scene.gd" id="1_jerp5"]
+[ext_resource type="Texture2D" uid="uid://qkmd50vihdcm" path="res://assets/sprites/objects/cart_post.png" id="2_f6c57"]
+[ext_resource type="PackedScene" uid="uid://cpsd6qipli5gg" path="res://scenes/enemies/enemy_slithorax.tscn" id="2_whljd"]
+[ext_resource type="Texture2D" uid="uid://c1c5vx14xqurr" path="res://assets/sprites/objects/cart_bottom.png" id="3_3royk"]
+[ext_resource type="Texture2D" uid="uid://cexoq2o70ho0f" path="res://assets/sprites/objects/cart_top.png" id="4_jy3xj"]
+[ext_resource type="Resource" uid="uid://cv23f1r78aodl" path="res://data/containers/container_wind.tres" id="7_knps5"]
+[ext_resource type="PackedScene" uid="uid://6fhpgculkq28" path="res://scenes/objects/ingredient_container.tscn" id="7_rkhb5"]
+[ext_resource type="Resource" uid="uid://b8quylit5xtrd" path="res://data/containers/container_blunt.tres" id="8_7mqdn"]
+[ext_resource type="Resource" uid="uid://bgdbqhjoes230" path="res://data/containers/container_ice.tres" id="8_b1mb5"]
+[ext_resource type="Texture2D" uid="uid://dmotrty3jclcy" path="res://assets/sprites/objects/prep-table.png" id="8_syn3c"]
+[ext_resource type="Resource" uid="uid://ddvtc172ni6nv" path="res://data/containers/container_pierce.tres" id="9_p3af1"]
+[ext_resource type="Resource" uid="uid://b2d103qbkr7ps" path="res://data/containers/container_shock.tres" id="9_t015s"]
+[ext_resource type="Resource" uid="uid://c1s8dknbnvlo0" path="res://data/containers/container_fire.tres" id="10_qcb8x"]
+[ext_resource type="PackedScene" uid="uid://xbqn5yix0yeg" path="res://scenes/objects/hotpot.tscn" id="14_oakrp"]
+
+[sub_resource type="Animation" id="Animation_h0g7l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CartLayer/Cart/FadeCover:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="Animation" id="Animation_vxyil"]
+resource_name = "level_entry_anim"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CartLayer/Cart/FadeCover:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, -10.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_neh7u"]
+_data = {
+"RESET": SubResource("Animation_h0g7l"),
+"level_entry_anim": SubResource("Animation_vxyil")
+}
+
+[node name="PrototypeLevel" type="Node2D"]
+script = ExtResource("1_jerp5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_neh7u")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_afhgh")
+volume_db = -80.0
+parameters/looping = true
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="BackgroundLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2147.0
+offset_right = 2147.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_h408d")
+metadata/_edit_lock_ = true
+
+[node name="ActionLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="EnemySlithorax" parent="ActionLayer" instance=ExtResource("2_whljd")]
+position = Vector2(0, 248)
+
+[node name="CartLayer" type="CanvasLayer" parent="."]
+
+[node name="Cart" type="Control" parent="CartLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="CartPost" type="TextureRect" parent="CartLayer/Cart"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -720.0
+offset_right = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_f6c57")
+
+[node name="CnWind" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 160.0
+offset_top = -416.0
+offset_right = 160.0
+offset_bottom = -416.0
+grow_vertical = 2
+container_data = ExtResource("7_knps5")
+
+[node name="CnIce" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 160.0
+offset_top = 56.0
+offset_right = 160.0
+offset_bottom = 56.0
+grow_vertical = 2
+container_data = ExtResource("8_b1mb5")
+
+[node name="CnShock" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -416.0
+offset_right = -168.0
+offset_bottom = -416.0
+grow_horizontal = 0
+grow_vertical = 2
+container_data = ExtResource("9_t015s")
+
+[node name="CnFire" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = 56.0
+offset_right = -168.0
+offset_bottom = 56.0
+grow_horizontal = 0
+grow_vertical = 2
+container_data = ExtResource("10_qcb8x")
+
+[node name="CartBottom" type="TextureRect" parent="CartLayer/Cart"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -720.0
+offset_top = -794.0
+offset_right = 720.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_3royk")
+
+[node name="CnBlunt" parent="CartLayer/Cart/CartBottom" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -376.0
+offset_top = -72.0
+offset_right = -376.0
+offset_bottom = -72.0
+grow_horizontal = 2
+container_data = ExtResource("8_7mqdn")
+
+[node name="CnPierce" parent="CartLayer/Cart/CartBottom" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 320.0
+offset_top = -48.0
+offset_right = 320.0
+offset_bottom = -48.0
+grow_horizontal = 2
+container_data = ExtResource("9_p3af1")
+
+[node name="CnSlash" parent="CartLayer/Cart/CartBottom" instance=ExtResource("7_rkhb5")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = -72.0
+offset_bottom = -72.0
+grow_horizontal = 2
+
+[node name="Hotpot" parent="CartLayer/Cart/CartBottom" instance=ExtResource("14_oakrp")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -721.0
+offset_right = 906.0
+offset_bottom = -40.0
+grow_vertical = 0
+
+[node name="Prepboard" type="TextureRect" parent="CartLayer/Cart/CartBottom"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -538.0
+offset_top = -610.0
+offset_right = -48.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_syn3c")
+
+[node name="CartTop" type="TextureRect" parent="CartLayer/Cart"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -720.0
+offset_right = 720.0
+offset_bottom = 259.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("4_jy3xj")
+
+[node name="FadeCover" type="ColorRect" parent="CartLayer/Cart"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

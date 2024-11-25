@@ -1,20 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://cu371d665jwnp"]
+[gd_scene load_steps=8 format=3 uid="uid://cu371d665jwnp"]
 
-[ext_resource type="Script" path="res://scripts/behavior_slash_ingredient.gd" id="1_q6shu"]
+[ext_resource type="Script" path="res://scripts/behavior_def_ingredient.gd" id="1_q6shu"]
 [ext_resource type="Resource" uid="uid://b7ksiu617q46c" path="res://data/ingredients/ingredient_wind.tres" id="2_fy6kj"]
 [ext_resource type="Texture2D" uid="uid://cvjg71p05ho23" path="res://assets/sprites/ingredients/raw-wind.png" id="3_0it30"]
+[ext_resource type="Shader" path="res://scripts/shaders/shaders_ingredient.gdshader" id="3_ef7o5"]
+[ext_resource type="Texture2D" uid="uid://deruscl8qoscs" path="res://assets/noise-filter.jpg" id="4_2ml4j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2bmg"]
+shader = ExtResource("3_ef7o5")
+shader_parameter/browning_noise_amount = 0.0
+shader_parameter/sizzle_amount = 0.0
+shader_parameter/bubble_amount = 0.0
+shader_parameter/heat_amount = 0.0
+shader_parameter/time = 1.0
+shader_parameter/noise_texture = ExtResource("4_2ml4j")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5wxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0it30")
+}],
+"loop": true,
+"name": &"raw",
+"speed": 5.0
+}]
 
 [node name="IngredientWind" type="RigidBody2D"]
 z_index = 5
+input_pickable = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_q6shu")
 ingredient_resource = ExtResource("2_fy6kj")
 throw_force_multiplier = 25.0
 throw_max_velocity = 50.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_0it30")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_a2bmg")
+sprite_frames = SubResource("SpriteFrames_y5wxy")
+animation = &"raw"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(1, -94, -50, -62, -87, -12, -100, 11, -72, 31, -19, 38, -7, 62, -18, 72, -37, 71, -40, 85, -17, 95, 16, 86, 28, 67, 24, 37, 65, 34, 87, 28, 99, 14, 76, -34, 40, -78)
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

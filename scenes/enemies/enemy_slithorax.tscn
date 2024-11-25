@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://cpsd6qipli5gg"]
+[gd_scene load_steps=106 format=3 uid="uid://cpsd6qipli5gg"]
 
 [ext_resource type="Script" path="res://scripts/behavior_def_enemy.gd" id="1_66x2w"]
 [ext_resource type="Texture2D" uid="uid://crwnhiqkr41mu" path="res://assets/sprites/enemies/spr_slithorax/idle/final-0001.png" id="1_cl6yf"]
@@ -91,6 +91,14 @@
 [ext_resource type="Texture2D" uid="uid://b4qidegoey051" path="res://assets/sprites/enemies/spr_slithorax/hurt/final-0018.png" id="50_gsr0t"]
 [ext_resource type="Texture2D" uid="uid://d12daex77xipv" path="res://assets/sprites/enemies/spr_slithorax/hurt/final-0019.png" id="51_f2du5"]
 [ext_resource type="Texture2D" uid="uid://b3whkjxvb6f4m" path="res://assets/sprites/enemies/spr_slithorax/hurt/final-0020.png" id="52_n2ubf"]
+[ext_resource type="Texture2D" uid="uid://0vektxe7a4rh" path="res://assets/sprites/ui/bar-enemy-action-timer-fill.png" id="92_axxw2"]
+[ext_resource type="Texture2D" uid="uid://qjmaavxdbbai" path="res://assets/sprites/ui/bar-enemy-background.png" id="92_cug8a"]
+[ext_resource type="Texture2D" uid="uid://tf8yjajs5g3k" path="res://assets/sprites/ui/bar-enemy-action-timer-background.png" id="93_xlp3q"]
+[ext_resource type="Script" path="res://scripts/utils_action_timer.gd" id="94_qbyk5"]
+[ext_resource type="Texture2D" uid="uid://ceqgm5b7pl2c8" path="res://assets/sprites/ui/bar-enemy-health-background.png" id="94_x2s7y"]
+[ext_resource type="Texture2D" uid="uid://djdux5k6yv110" path="res://assets/sprites/ui/bar-enemy-health-progress.png" id="95_pqod0"]
+[ext_resource type="Script" path="res://scripts/utils_healthbar.gd" id="96_cl62d"]
+[ext_resource type="Texture2D" uid="uid://cjrsxbgwlnprc" path="res://assets/sprites/ui/bar-enemy-health-fill.png" id="96_pqjcn"]
 
 [sub_resource type="Animation" id="Animation_8lgpo"]
 length = 0.001
@@ -221,7 +229,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_ehdgh")
 }],
-"loop": true,
+"loop": false,
 "name": &"attacking",
 "speed": 24.0
 }, {
@@ -274,9 +282,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("32_7oa34")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 24.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -339,7 +347,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("52_n2ubf")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 24.0
 }, {
@@ -482,7 +490,6 @@ libraries = {
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oekut")
 animation = &"idle"
-frame_progress = 0.14721
 
 [node name="EnemyUI" type="Control" parent="AnimatedSprite2D"]
 layout_mode = 3
@@ -495,15 +502,71 @@ offset_right = -289.5
 offset_bottom = -778.0
 grow_horizontal = 2
 
+[node name="EnemyBars" type="TextureRect" parent="AnimatedSprite2D/EnemyUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -393.0
+offset_top = -186.0
+offset_right = 58.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("92_cug8a")
+
+[node name="ActionTimerUI" type="TextureProgressBar" parent="AnimatedSprite2D/EnemyUI/EnemyBars"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -54.0
+offset_right = 93.0
+offset_bottom = 26.0
+grow_vertical = 2
+step = 0.001
+fill_mode = 4
+texture_under = ExtResource("93_xlp3q")
+texture_progress = ExtResource("92_axxw2")
+script = ExtResource("94_qbyk5")
+
+[node name="ActionTimer" type="Timer" parent="AnimatedSprite2D/EnemyUI/EnemyBars/ActionTimerUI"]
+one_shot = true
+autostart = true
+
+[node name="HealthBarUI" type="TextureProgressBar" parent="AnimatedSprite2D/EnemyUI/EnemyBars"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 84.0
+offset_right = 439.0
+offset_bottom = 124.0
+step = 0.001
+value = 50.0
+texture_under = ExtResource("94_x2s7y")
+texture_progress = ExtResource("95_pqod0")
+script = ExtResource("96_cl62d")
+
+[node name="HealthBarFill" type="TextureProgressBar" parent="AnimatedSprite2D/EnemyUI/EnemyBars/HealthBarUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+step = 0.001
+value = 45.0
+texture_progress = ExtResource("96_pqjcn")
+
 [node name="EnemyName" type="Label" parent="AnimatedSprite2D/EnemyUI"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -253.5
-offset_top = -88.0
+offset_top = -208.0
 offset_right = 253.5
-offset_bottom = -7.0
+offset_bottom = -127.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 theme = ExtResource("40_wbk60")
@@ -521,10 +584,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -134.5
-offset_top = -8.0
-offset_right = 134.5
-offset_bottom = 56.0
+offset_left = -149.5
+offset_top = -136.0
+offset_right = 149.5
+offset_bottom = -72.0
 grow_horizontal = 2
 theme = ExtResource("40_wbk60")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
@@ -536,3 +599,5 @@ theme_override_font_sizes/font_size = 56
 text = "Enemy Title"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="timeout" from="AnimatedSprite2D/EnemyUI/EnemyBars/ActionTimerUI/ActionTimer" to="." method="_do_action"]

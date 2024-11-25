@@ -9,5 +9,6 @@ script = ExtResource("1_wlvca")
 container_texture = ExtResource("1_sosl7")
 ingredient_id = "fire"
 ingredient_scene = ExtResource("2_acx1t")
+pop_cooldown = 0.8
 pop_direction = "left"
 pop_strength = 1250
