@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bray8m7es3vmk"]
 
-[ext_resource type="Script" path="res://scripts/controller_menu.gd" id="1_pr6vu"]
+[ext_resource type="Script" path="res://scripts/controllers/controller_menu.gd" id="1_pr6vu"]
 [ext_resource type="Texture2D" uid="uid://dego5l4bpuk4q" path="res://assets/sprites/background/main_mnu_bg.png" id="2_0q1oy"]
 [ext_resource type="FontFile" uid="uid://dfipgheaimk53" path="res://assets/fonts/Medici Text.ttf" id="2_m7xrd"]
 [ext_resource type="Theme" uid="uid://btuadhest44h3" path="res://themes/ui_default.tres" id="3_dt8tr"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://b7yfkg28dj5ot" path="res://assets/music/BattleMusic.mp3" id="1_afhgh"]
 [ext_resource type="Texture2D" uid="uid://dg0ai31k46ptn" path="res://assets/sprites/background/protoype_level_bg_HD.png" id="1_h408d"]
-[ext_resource type="Script" path="res://scripts/controller_game_scene.gd" id="1_jerp5"]
+[ext_resource type="Script" path="res://scripts/controllers/controller_game_scene.gd" id="1_jerp5"]
 [ext_resource type="Texture2D" uid="uid://qkmd50vihdcm" path="res://assets/sprites/objects/cart_post.png" id="2_f6c57"]
 [ext_resource type="PackedScene" uid="uid://cpsd6qipli5gg" path="res://scenes/enemies/enemy_slithorax.tscn" id="2_whljd"]
 [ext_resource type="Texture2D" uid="uid://c1c5vx14xqurr" path="res://assets/sprites/objects/cart_bottom.png" id="3_3royk"]
@@ -91,6 +91,7 @@ script = ExtResource("1_jerp5")
 has_intro_animation = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(104, 144)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -132,7 +133,7 @@ metadata/_edit_lock_ = true
 follow_viewport_enabled = true
 
 [node name="EnemySlithorax" parent="ActionLayer" instance=ExtResource("2_whljd")]
-position = Vector2(-56, 0)
+position = Vector2(-3, 3)
 
 [node name="CartLayer" type="CanvasLayer" parent="."]
 

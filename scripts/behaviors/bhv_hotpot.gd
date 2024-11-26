@@ -89,11 +89,11 @@ func _finish_cooking(slot: int) -> void:
 		slot_tweens[slot] = null
 	
 	#reset stove animation: check if all slots is null
-	var cooking_slots_empty = true
-	for i in cooking_slots:
-		if i != null:
-			cooking_slots_empty = false
-			break
-	if cooking_slots_empty:
-		anim_sprite.stop()
-		anim_sprite.animation = 'default'
+	#var cooking_slots_empty = true
+	#for i in cooking_slots:
+		#if i != null:
+			#cooking_slots_empty = false
+			#break
+	#if cooking_slots_empty:
+		#anim_sprite.stop()
+		#anim_sprite.animation = 'default'

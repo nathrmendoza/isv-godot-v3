@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ccq1wd57poq7h"]
 
-[ext_resource type="Script" path="res://scripts/behavior_def_ingredient.gd" id="1_t0l3t"]
-[ext_resource type="Resource" uid="uid://dmp7loqbbb0xq" path="res://data/ingredients/ingredient_ice.tres" id="2_mepj3"]
+[ext_resource type="Script" path="res://scripts/behaviors/bhv_def_ingredient.gd" id="1_t0l3t"]
+[ext_resource type="Resource" uid="uid://dmp7loqbbb0xq" path="res://data/ingredients/data_ingredient_ice.tres" id="2_mepj3"]
 [ext_resource type="Shader" path="res://scripts/shaders/shaders_ingredient.gdshader" id="3_atkxn"]
 [ext_resource type="Texture2D" uid="uid://cb3u0gsnm5f4k" path="res://assets/sprites/ingredients/raw-ice.png" id="3_t34s4"]
 [ext_resource type="Texture2D" uid="uid://deruscl8qoscs" path="res://assets/noise-filter.jpg" id="4_sjhc2"]

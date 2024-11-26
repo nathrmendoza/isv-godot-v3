@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://data/_models/model_enemy.gd" id="1_3m6lc"]
 [ext_resource type="Script" path="res://data/_models/model_enemy_actions.gd" id="1_en0ek"]
-[ext_resource type="Resource" uid="uid://c2sub3278usne" path="res://data/enemy_actions/ea_tail_whip.tres" id="2_k2flb"]
+[ext_resource type="Resource" uid="uid://c2sub3278usne" path="res://data/enemy_actions/data_ea_tail_whip.tres" id="2_k2flb"]
 
 [resource]
 script = ExtResource("1_3m6lc")

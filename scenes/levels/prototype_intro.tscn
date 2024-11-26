@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://cd31seq01o0e3" path="res://assets/music/MODIFIED-VendorQuest.mp3" id="1_qc7xx"]
 [ext_resource type="PackedScene" uid="uid://h6nrqm1bblb6" path="res://scenes/ui/transitioning_background.tscn" id="1_tb1wf"]
-[ext_resource type="Script" path="res://scripts/controller_intro.gd" id="1_u1767"]
+[ext_resource type="Script" path="res://scripts/controllers/controller_intro.gd" id="1_u1767"]
 [ext_resource type="Texture2D" uid="uid://61e4g36ecri1" path="res://assets/sprites/background/intro_panel_1.png" id="2_noq68"]
 [ext_resource type="PackedScene" uid="uid://ch5eg2l25gndd" path="res://scenes/ui/text_panel_bottom.tscn" id="3_xxai1"]
 

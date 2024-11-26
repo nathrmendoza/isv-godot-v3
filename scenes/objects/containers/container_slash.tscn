@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://mmw7iqwa6pm"]
 
 [ext_resource type="Texture2D" uid="uid://c135xbo32h57c" path="res://assets/sprites/objects/container-slash.png" id="1_8kai6"]
-[ext_resource type="Script" path="res://scripts/bhv_def_container.gd" id="1_vulr8"]
-[ext_resource type="Resource" uid="uid://dqlo8pmrxrq27" path="res://data/containers/container_slash.tres" id="2_ypo1j"]
+[ext_resource type="Script" path="res://scripts/behaviors/bhv_def_container.gd" id="1_vulr8"]
+[ext_resource type="Resource" uid="uid://dqlo8pmrxrq27" path="res://data/containers/data_container_slash.tres" id="2_ypo1j"]
 
 [node name="ContainerSlash" type="Control"]
 layout_mode = 3

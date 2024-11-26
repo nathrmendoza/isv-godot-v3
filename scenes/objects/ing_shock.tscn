@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6h64fmrx17d2"]
 
 [ext_resource type="Shader" path="res://scripts/shaders/shaders_ingredient.gdshader" id="1_amk78"]
-[ext_resource type="Script" path="res://scripts/behavior_def_ingredient.gd" id="1_r7bjp"]
-[ext_resource type="Resource" uid="uid://cb1bi730kq16h" path="res://data/ingredients/ingredient_shock.tres" id="2_08kxv"]
+[ext_resource type="Script" path="res://scripts/behaviors/bhv_def_ingredient.gd" id="1_r7bjp"]
+[ext_resource type="Resource" uid="uid://cb1bi730kq16h" path="res://data/ingredients/data_ingredient_shock.tres" id="2_08kxv"]
 [ext_resource type="Texture2D" uid="uid://deruscl8qoscs" path="res://assets/noise-filter.jpg" id="2_rr11k"]
 [ext_resource type="Texture2D" uid="uid://cc2kbnwvpti6b" path="res://assets/sprites/ingredients/raw-shock.png" id="3_r6xll"]
 

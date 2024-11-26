@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dg8mhjpmh5hgf"]
 
-[ext_resource type="Script" path="res://scripts/bhv_def_container.gd" id="1_bob08"]
-[ext_resource type="Resource" uid="uid://c1s8dknbnvlo0" path="res://data/containers/container_fire.tres" id="2_tdilq"]
+[ext_resource type="Script" path="res://scripts/behaviors/bhv_def_container.gd" id="1_bob08"]
+[ext_resource type="Resource" uid="uid://c1s8dknbnvlo0" path="res://data/containers/data_container_fire.tres" id="2_tdilq"]
 [ext_resource type="Texture2D" uid="uid://bbg0jh4sbwg11" path="res://assets/sprites/objects/container-fire.png" id="3_7504q"]
 
 [node name="ContainerFire" type="Control"]

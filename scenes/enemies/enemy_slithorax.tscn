@@ -1,8 +1,8 @@
 [gd_scene load_steps=106 format=3 uid="uid://cpsd6qipli5gg"]
 
-[ext_resource type="Script" path="res://scripts/behavior_def_enemy.gd" id="1_66x2w"]
+[ext_resource type="Script" path="res://scripts/behaviors/bhv_def_enemy.gd" id="1_66x2w"]
 [ext_resource type="Texture2D" uid="uid://crwnhiqkr41mu" path="res://assets/sprites/enemies/spr_slithorax/idle/final-0001.png" id="1_cl6yf"]
-[ext_resource type="Resource" uid="uid://833p1rgfqbu" path="res://data/enemies/slithorax_data.tres" id="2_27x72"]
+[ext_resource type="Resource" uid="uid://833p1rgfqbu" path="res://data/enemies/data_enemy_slithorax.tres" id="2_27x72"]
 [ext_resource type="Texture2D" uid="uid://bueqfvon6kqum" path="res://assets/sprites/enemies/spr_slithorax/idle/final-0002.png" id="2_68uik"]
 [ext_resource type="Texture2D" uid="uid://c8lk18naawjw1" path="res://assets/sprites/enemies/spr_slithorax/attacking/final-0001.png" id="3_58o4c"]
 [ext_resource type="Texture2D" uid="uid://640yb40doot5" path="res://assets/sprites/enemies/spr_slithorax/idle/final-0003.png" id="3_c0xfc"]
@@ -94,10 +94,10 @@
 [ext_resource type="Texture2D" uid="uid://0vektxe7a4rh" path="res://assets/sprites/ui/bar-enemy-action-timer-fill.png" id="92_axxw2"]
 [ext_resource type="Texture2D" uid="uid://qjmaavxdbbai" path="res://assets/sprites/ui/bar-enemy-background.png" id="92_cug8a"]
 [ext_resource type="Texture2D" uid="uid://tf8yjajs5g3k" path="res://assets/sprites/ui/bar-enemy-action-timer-background.png" id="93_xlp3q"]
-[ext_resource type="Script" path="res://scripts/utils_action_timer.gd" id="94_qbyk5"]
+[ext_resource type="Script" path="res://scripts/uitls/utils_action_timer.gd" id="94_qbyk5"]
 [ext_resource type="Texture2D" uid="uid://ceqgm5b7pl2c8" path="res://assets/sprites/ui/bar-enemy-health-background.png" id="94_x2s7y"]
 [ext_resource type="Texture2D" uid="uid://djdux5k6yv110" path="res://assets/sprites/ui/bar-enemy-health-progress.png" id="95_pqod0"]
-[ext_resource type="Script" path="res://scripts/utils_healthbar.gd" id="96_cl62d"]
+[ext_resource type="Script" path="res://scripts/uitls/utils_healthbar.gd" id="96_cl62d"]
 [ext_resource type="Texture2D" uid="uid://cjrsxbgwlnprc" path="res://assets/sprites/ui/bar-enemy-health-fill.png" id="96_pqjcn"]
 
 [sub_resource type="Animation" id="Animation_8lgpo"]

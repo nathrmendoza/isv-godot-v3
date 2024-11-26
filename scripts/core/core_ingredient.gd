@@ -21,11 +21,22 @@ var viewport_height: float
 var is_cooking: bool = false
 var is_cooked: bool = false
 
+#var debug_points: Array[Vector2] = []
+
+#func _draw():
+	#print_debug('PASS DRAW')
+	#for point in debug_points:
+		#draw_circle(to_local(point), 100, Color(1, 0, 0, 0.5))
+	#debug_points.clear()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	
-	if _init_validation() == false: queue_free()
+	collision_layer = 1
+	collision_mask = 0
+	
+	if _ingredient_checker() == false: queue_free()
 	input_pickable = true
 	viewport_height = get_viewport_rect().size.y
 	offscreen_margin = _get_polygon_height()
@@ -33,10 +44,17 @@ func _ready() -> void:
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if is_draggable:
-			if UtilsInputQueries.check_topmost_clicked(self, event.global_position) and _is_point_in_polygon(event.global_position):
-				get_viewport().set_input_as_handled()
-				_grabbing_object(event.global_position)
+		print_debug('PASS: EVENT TRIGGERED')
+		print_debug('UTILS RESULT: ', UtilsInputQueries.check_topmost_clicked(self, event.global_position))
+		if UtilsInputQueries.check_topmost_clicked(self, event.global_position):
+			print_debug('PASS: UTILS QUERY')
+			get_viewport().set_input_as_handled()
+			# Add debug point
+			#debug_points.append(event.global_position)
+			#queue_redraw()
+			if is_draggable:
+				if  _is_point_in_polygon(event.global_position):
+					_grabbing_object(event.global_position)
 
 func _physics_process(delta: float) -> void:
 	if is_dragging:
@@ -85,13 +103,8 @@ func _finish_cooking():
 	#sprite.animation = 'cooked'
 	freeze = false
 	_tween_pop_off('right', 1200)
-	#collision_body.disabled = false
 
-func _tween_pop_off(pop_direction: String, pop_strength: int, disable_collider: bool = true) -> void:
-	if disable_collider:
-		set_collision_mask_value(1, false)
-		#collision_body.disabled = true
-	
+func _tween_pop_off(pop_direction: String, pop_strength: int) -> void:
 	var rand_x = randi_range(250, 500)
 	match pop_direction:
 		'straight':
@@ -100,11 +113,6 @@ func _tween_pop_off(pop_direction: String, pop_strength: int, disable_collider: 
 			apply_central_impulse(Vector2(-rand_x, -pop_strength))
 		'right':
 			apply_central_impulse(Vector2(rand_x, -pop_strength))
-	
-	if disable_collider:
-		await get_tree().create_timer(2).timeout
-		set_collision_mask_value(1, true)
-		#collision_body.disabled = false
 
 func _check_pointer_within_shape(point: Vector2) -> bool:
 	if collision_body.shape:
@@ -162,7 +170,7 @@ func _get_anim_texture(state: String) -> Texture2D:
 func _on_viewport_change() -> void:
 	viewport_height = get_viewport_rect().size.y
 
-func _init_validation() -> bool:
+func _ingredient_checker() -> bool:
 	if ingredient_resource == null:
 		return false
 	return true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ch5eg2l25gndd"]
 
 [ext_resource type="Shader" path="res://scripts/shaders/shaders_blur.gdshader" id="1_4aoa3"]
-[ext_resource type="Script" path="res://scripts/utils_scrolling_text.gd" id="1_lgejw"]
+[ext_resource type="Script" path="res://scripts/uitls/utils_scrolling_text.gd" id="1_lgejw"]
 [ext_resource type="Theme" uid="uid://btuadhest44h3" path="res://themes/ui_default.tres" id="2_ad62m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kl8x"]

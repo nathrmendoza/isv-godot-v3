@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://chyfp3hi0n6tu"]
 
-[ext_resource type="Script" path="res://scripts/behavior_def_ingredient.gd" id="1_t3nx5"]
+[ext_resource type="Script" path="res://scripts/behaviors/bhv_def_ingredient.gd" id="1_hv4fy"]
 [ext_resource type="Shader" path="res://scripts/shaders/shaders_ingredient.gdshader" id="1_tx8o3"]
-[ext_resource type="Resource" uid="uid://y52fjgxlb84x" path="res://data/ingredients/ingredient_slash.tres" id="2_mjh7m"]
+[ext_resource type="Resource" uid="uid://y52fjgxlb84x" path="res://data/ingredients/data_ingredient_slash.tres" id="2_mjh7m"]
 [ext_resource type="Texture2D" uid="uid://cqk78hf60guip" path="res://assets/sprites/ingredients/raw-slash.png" id="2_twukx"]
 [ext_resource type="Texture2D" uid="uid://deruscl8qoscs" path="res://assets/noise-filter.jpg" id="2_ywupj"]
 
@@ -33,7 +33,7 @@ gravity_scale = 1.25
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_t3nx5")
+script = ExtResource("1_hv4fy")
 ingredient_resource = ExtResource("2_mjh7m")
 throw_force_multiplier = 25.0
 throw_max_velocity = 50.0
@@ -45,5 +45,7 @@ animation = &"raw"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-52, -113, 22, -99, 67, -55, 95, -36, 96, 14, 80, 31, 55, 82, 38, 90, 33, 106, -1, 112, -18, 98, -43, 70, -69, 82, -56, 43, -19, 51, -20, 8, -60, 10, -98, -34, -94, -92)
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://xbqn5yix0yeg"]
 
 [ext_resource type="Texture2D" uid="uid://njh4enpqyrnc" path="res://assets/sprites/objects/hotpot.png" id="1_uwaqy"]
-[ext_resource type="Script" path="res://scripts/behavior_hotpot.gd" id="2_w6hj7"]
+[ext_resource type="Script" path="res://scripts/behaviors/bhv_hotpot.gd" id="2_w6hj7"]
 [ext_resource type="Texture2D" uid="uid://cr18ielwhap1b" path="res://assets/sprites/objects/animated-oil/final-0001.png" id="19_cfsvt"]
 [ext_resource type="Texture2D" uid="uid://8u8o1mf35raw" path="res://assets/sprites/objects/hotpot-mask.png" id="19_xur66"]
 [ext_resource type="Texture2D" uid="uid://b5qcb0cqcs8e0" path="res://assets/sprites/objects/animated-oil/final-0002.png" id="20_4u5q6"]
