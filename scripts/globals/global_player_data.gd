@@ -2,6 +2,9 @@ extends Node
 
 signal on_ingredient_update(ingredient_name, new_amount)
 
+var _health: float = 1000
+var _armor: float = 250
+
 var _ingredients = {
 	"blunt": 26,
 	"slash": 20,
@@ -11,6 +14,9 @@ var _ingredients = {
 	"shock": 13,
 	"fire": 5
 }
+
+func _update_health(amount: float) -> void: 
+	_health = amount
 
 func _add_ingredient(name: String, amount: int) -> void: 
 	if _ingredients.has(name):

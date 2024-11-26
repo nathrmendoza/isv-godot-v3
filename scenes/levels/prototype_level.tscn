@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ci6g8naqx2d1i"]
+[gd_scene load_steps=28 format=3 uid="uid://ci6g8naqx2d1i"]
 
 [ext_resource type="AudioStream" uid="uid://b7yfkg28dj5ot" path="res://assets/music/BattleMusic.mp3" id="1_afhgh"]
 [ext_resource type="Texture2D" uid="uid://dg0ai31k46ptn" path="res://assets/sprites/background/protoype_level_bg_HD.png" id="1_h408d"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://boytsauebidu" path="res://scenes/objects/containers/container_shock.tscn" id="8_4573p"]
 [ext_resource type="Texture2D" uid="uid://dmotrty3jclcy" path="res://assets/sprites/objects/prep-table.png" id="8_syn3c"]
 [ext_resource type="PackedScene" uid="uid://dg8mhjpmh5hgf" path="res://scenes/objects/containers/container_fire.tscn" id="9_hh1qf"]
+[ext_resource type="Script" path="res://scripts/uitls/utils_player_ui.gd" id="11_5xnty"]
 [ext_resource type="Texture2D" uid="uid://clhgvxvm38ema" path="res://assets/sprites/ui/icon-heart.png" id="12_llg26"]
 [ext_resource type="Texture2D" uid="uid://bkifedrhrhqd8" path="res://assets/sprites/ui/bar-player.png" id="13_onvbu"]
 [ext_resource type="Texture2D" uid="uid://djxl1awm7q0d" path="res://assets/sprites/ui/icon-armor.png" id="14_dyl18"]
@@ -223,9 +224,10 @@ offset_left = 56.0
 offset_top = 64.0
 offset_right = 96.0
 offset_bottom = 104.0
+script = ExtResource("11_5xnty")
 metadata/_edit_group_ = true
 
-[node name="PlayerHealth2" type="HBoxContainer" parent="CartLayer/Cart/CartTop/PlayerUI"]
+[node name="PlayerHealth" type="HBoxContainer" parent="CartLayer/Cart/CartTop/PlayerUI"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -236,17 +238,17 @@ offset_bottom = 17.0
 grow_vertical = 2
 theme_override_constants/separation = 32
 
-[node name="HeartIcon" type="TextureRect" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerHealth2"]
+[node name="HeartIcon" type="TextureRect" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerHealth"]
 layout_mode = 2
 texture = ExtResource("12_llg26")
 stretch_mode = 3
 
-[node name="HealthBarBG" type="TextureRect" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerHealth2"]
+[node name="HealthBarBG" type="TextureRect" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerHealth"]
 layout_mode = 2
 texture = ExtResource("13_onvbu")
 stretch_mode = 3
 
-[node name="HealthBarProgress" type="TextureProgressBar" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerHealth2/HealthBarBG"]
+[node name="HealthBarProgress" type="TextureProgressBar" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerHealth/HealthBarBG"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 20.0
@@ -256,7 +258,7 @@ value = 75.0
 texture_under = ExtResource("14_rqy66")
 texture_progress = ExtResource("15_4ehwi")
 
-[node name="HealthBarFill" type="TextureProgressBar" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerHealth2/HealthBarBG/HealthBarProgress"]
+[node name="HealthBarFill" type="TextureProgressBar" parent="CartLayer/Cart/CartTop/PlayerUI/PlayerHealth/HealthBarBG/HealthBarProgress"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
