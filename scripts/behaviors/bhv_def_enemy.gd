@@ -1,5 +1,6 @@
 extends CoreEnemy
 signal _on_take_damage(new_health: float)
+signal _on_does_action(action: EnemyActions)
 
 @export var enemy_data: Enemy
 
@@ -61,10 +62,11 @@ func _do_action() -> void:
 	var the_action = _enemy_action_logic()
 	if the_action == null: return
 	
-	# EMIT SIGNAL THAT PASSES WHATEVER EFFECT/DAMAGE TO THE PLAYER HERE
-	
 	sprite.play(the_action.animation_state)
 	await sprite.animation_finished
+	
+	_on_does_action.emit(the_action)
+	
 	sprite.play('idle')
 	
 	action_timer_ui._reset_action_timer()

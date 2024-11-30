@@ -3,7 +3,9 @@ class_name EnemyActions
 
 @export var action_name: String = 'Tail Whip'
 @export_multiline var action_description: String
-@export var damage_power: int = 25
+
+@export_enum('damage', 'buff') var action_type: String = 'damage'
+@export var damage_power: float = 75.0
 
 @export var buff: Buff = null
 @export var debuff: Debuff = null

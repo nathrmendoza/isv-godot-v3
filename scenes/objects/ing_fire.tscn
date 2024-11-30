@@ -1,19 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://phorwcq82pxk"]
+[gd_scene load_steps=7 format=3 uid="uid://phorwcq82pxk"]
 
 [ext_resource type="Script" path="res://scripts/behaviors/bhv_def_ingredient.gd" id="1_kfkj2"]
 [ext_resource type="Resource" uid="uid://cl15yvaja7boy" path="res://data/ingredients/data_ingredient_fire.tres" id="2_c047g"]
-[ext_resource type="Shader" path="res://scripts/shaders/shaders_ingredient.gdshader" id="3_00roh"]
+[ext_resource type="Shader" path="res://scripts/shaders/shaders_ingredient_cooking.gdshader" id="3_00roh"]
 [ext_resource type="Texture2D" uid="uid://coy0ik1gfqvxt" path="res://assets/sprites/ingredients/raw-fire.png" id="3_45dwo"]
-[ext_resource type="Texture2D" uid="uid://deruscl8qoscs" path="res://assets/noise-filter.jpg" id="4_spers"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uveym"]
 shader = ExtResource("3_00roh")
-shader_parameter/browning_noise_amount = 0.0
-shader_parameter/sizzle_amount = 0.0
-shader_parameter/bubble_amount = 0.0
-shader_parameter/heat_amount = 0.0
-shader_parameter/time = null
-shader_parameter/noise_texture = ExtResource("4_spers")
+shader_parameter/cook_progress = null
+shader_parameter/heat_intensity = null
+shader_parameter/raw_color = Color(1, 1, 1, 1)
+shader_parameter/medium_color = Color(1, 0.9, 0.7, 1)
+shader_parameter/cooked_color = Color(0.8, 0.6, 0.4, 1)
+shader_parameter/is_cooking = false
+shader_parameter/fixed_time = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mhpu2"]
 animations = [{

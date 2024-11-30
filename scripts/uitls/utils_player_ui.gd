@@ -18,6 +18,7 @@ func _init_player_ui(new_health: float, new_armor: float) -> void:
 	healthbar_fill.max_value = new_health
 	healthbar_fill.value = new_health
 	
+	p_armor = new_armor
 	armor_progress.max_value = new_armor
 	armor_progress.value = new_armor
 	armor_fill.max_value = new_armor

@@ -18,8 +18,4 @@ static func check_topmost_clicked(node: Node2D, event_position: Vector2) -> bool
 
 	var results = space.intersect_shape(query, 1)
 
-	# Debug info
-	if results.size() > 0:
-		print("Hit: ", results[0].collider.name)
-
 	return results.size() > 0 and results[0].collider == node

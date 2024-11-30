@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://ci6g8naqx2d1i"]
+[gd_scene load_steps=29 format=3 uid="uid://ci6g8naqx2d1i"]
 
 [ext_resource type="AudioStream" uid="uid://b7yfkg28dj5ot" path="res://assets/music/BattleMusic.mp3" id="1_afhgh"]
 [ext_resource type="Texture2D" uid="uid://dg0ai31k46ptn" path="res://assets/sprites/background/protoype_level_bg_HD.png" id="1_h408d"]
 [ext_resource type="Script" path="res://scripts/controllers/controller_game_scene.gd" id="1_jerp5"]
+[ext_resource type="Script" path="res://scripts/behaviors/bhv_cart.gd" id="2_5q7ev"]
 [ext_resource type="Texture2D" uid="uid://qkmd50vihdcm" path="res://assets/sprites/objects/cart_post.png" id="2_f6c57"]
 [ext_resource type="PackedScene" uid="uid://cpsd6qipli5gg" path="res://scenes/enemies/enemy_slithorax.tscn" id="2_whljd"]
 [ext_resource type="Texture2D" uid="uid://c1c5vx14xqurr" path="res://assets/sprites/objects/cart_bottom.png" id="3_3royk"]
@@ -134,7 +135,7 @@ metadata/_edit_lock_ = true
 follow_viewport_enabled = true
 
 [node name="EnemySlithorax" parent="ActionLayer" instance=ExtResource("2_whljd")]
-position = Vector2(-3, 3)
+position = Vector2(-3, 131)
 
 [node name="CartLayer" type="CanvasLayer" parent="."]
 
@@ -146,6 +147,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("2_5q7ev")
 
 [node name="CartPost" type="TextureRect" parent="CartLayer/Cart"]
 layout_mode = 1
@@ -168,6 +170,7 @@ anchor_bottom = 0.5
 offset_left = 168.0
 offset_right = 168.0
 grow_vertical = 2
+target_path = NodePath("../../../../PhysicsLayer")
 
 [node name="ContainerWind" parent="CartLayer/Cart/CartPost" instance=ExtResource("7_v10hg")]
 layout_mode = 1
@@ -179,6 +182,7 @@ offset_top = -448.0
 offset_right = 168.0
 offset_bottom = -448.0
 grow_vertical = 2
+target_path = NodePath("../../../../PhysicsLayer")
 
 [node name="ContainerShock" parent="CartLayer/Cart/CartPost" instance=ExtResource("8_4573p")]
 layout_mode = 1
@@ -193,6 +197,7 @@ offset_right = -160.0
 offset_bottom = -448.0
 grow_horizontal = 0
 grow_vertical = 2
+target_path = NodePath("../../../../PhysicsLayer")
 
 [node name="ContainerFire" parent="CartLayer/Cart/CartPost" instance=ExtResource("9_hh1qf")]
 layout_mode = 1
@@ -205,6 +210,7 @@ offset_left = -160.0
 offset_right = -160.0
 grow_horizontal = 0
 grow_vertical = 2
+target_path = NodePath("../../../../PhysicsLayer")
 
 [node name="CartTop" type="TextureRect" parent="CartLayer/Cart"]
 layout_mode = 1
@@ -324,6 +330,7 @@ offset_top = -24.0
 offset_right = -368.0
 offset_bottom = -24.0
 grow_horizontal = 2
+target_path = NodePath("../../../../PhysicsLayer")
 
 [node name="ContainerPierce" parent="CartLayer/Cart/CartBottom" instance=ExtResource("20_plt8t")]
 layout_mode = 1
@@ -335,6 +342,7 @@ offset_top = -8.0
 offset_right = 336.0
 offset_bottom = -8.0
 grow_horizontal = 2
+target_path = NodePath("../../../../PhysicsLayer")
 
 [node name="ContainerSlash" parent="CartLayer/Cart/CartBottom" instance=ExtResource("20_1p4j2")]
 layout_mode = 1
@@ -344,6 +352,7 @@ anchor_right = 0.5
 offset_top = -16.0
 offset_bottom = -16.0
 grow_horizontal = 2
+target_path = NodePath("../../../../PhysicsLayer")
 
 [node name="Hotpot" parent="CartLayer/Cart/CartBottom" instance=ExtResource("14_oakrp")]
 layout_mode = 1
@@ -381,3 +390,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="PhysicsLayer" type="CanvasLayer" parent="."]
+
+[connection signal="_on_does_action" from="ActionLayer/EnemySlithorax" to="." method="_enemy_does_action"]

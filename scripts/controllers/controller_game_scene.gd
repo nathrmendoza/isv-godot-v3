@@ -3,6 +3,7 @@ extends Node2D
 @export var has_intro_animation: bool = true
 @onready var anim_player = $AnimationPlayer
 @onready var player_ui = $CartLayer/Cart/CartTop/PlayerUI
+@onready var cart = $CartLayer/Cart
 
 var player_health: float
 var player_armor: float
@@ -26,15 +27,13 @@ func _ready() -> void:
 	
 	#update UI related
 	player_ui._init_player_ui(player_health, player_armor)
-	
-	await get_tree().create_timer(3).timeout
-	_player_take_damage(150)
-	await get_tree().create_timer(1).timeout
-	_player_take_damage(150)
-	await get_tree().create_timer(4).timeout
-	_player_take_damage(250)
+
+func _enemy_does_action(action: EnemyActions) -> void:
+	if action.action_type == 'damage':
+		_player_take_damage(action.damage_power)
 
 func _player_take_damage(damage_amount: float) -> void:
+	cart._shake()
 	if player_armor > 0:
 		player_armor -= damage_amount
 		player_ui._set_armor(player_armor)

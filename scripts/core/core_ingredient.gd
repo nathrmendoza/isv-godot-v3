@@ -21,40 +21,32 @@ var viewport_height: float
 var is_cooking: bool = false
 var is_cooked: bool = false
 
-#var debug_points: Array[Vector2] = []
-
-#func _draw():
-	#print_debug('PASS DRAW')
-	#for point in debug_points:
-		#draw_circle(to_local(point), 100, Color(1, 0, 0, 0.5))
-	#debug_points.clear()
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	
-	collision_layer = 1
-	collision_mask = 0
+	# assign material as unique
+	var cooking_material = ShaderMaterial.new()
+	cooking_material.shader = preload("res://scripts/shaders/shaders_ingredient_cooking.gdshader")
+	sprite.material = cooking_material.duplicate()
 	
 	if _ingredient_checker() == false: queue_free()
 	input_pickable = true
 	viewport_height = get_viewport_rect().size.y
 	offscreen_margin = _get_polygon_height()
 	get_tree().root.size_changed.connect(_on_viewport_change)
+	
+	# just instantiated, remove collisions
+	collision_layer = 1
+	collision_mask = 0
+	
+	await get_tree().create_timer(2).timeout
+	collision_mask = 1
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		print_debug('PASS: EVENT TRIGGERED')
-		print_debug('UTILS RESULT: ', UtilsInputQueries.check_topmost_clicked(self, event.global_position))
-		if UtilsInputQueries.check_topmost_clicked(self, event.global_position):
-			print_debug('PASS: UTILS QUERY')
-			get_viewport().set_input_as_handled()
-			# Add debug point
-			#debug_points.append(event.global_position)
-			#queue_redraw()
-			if is_draggable:
-				if  _is_point_in_polygon(event.global_position):
-					_grabbing_object(event.global_position)
+		if is_draggable:
+			if  _is_point_in_polygon(event.global_position):
+				_grabbing_object(event.global_position)
 
 func _physics_process(delta: float) -> void:
 	if is_dragging:
@@ -70,9 +62,6 @@ func _physics_process(delta: float) -> void:
 			is_dragging = false
 			freeze = false
 			apply_central_impulse(pointer_velocity * throw_force_multiplier)
-	
-	if is_cooking:
-		shader_material.set_shader_parameter("time", Time.get_ticks_msec() / 1000.0)
 		
 	#remove if below boundary
 	if global_position.y > viewport_height + offscreen_margin:
@@ -88,6 +77,7 @@ func _grabbing_object(pointer_position: Vector2) -> void:
 
 func _start_cooking(cooking_position: Vector2):
 	if not is_cooked:
+		collision_mask = 0
 		is_cooking = true
 		is_draggable = false
 		global_position = cooking_position
@@ -100,9 +90,20 @@ func _finish_cooking():
 	is_cooking = false
 	is_cooked = true
 	is_draggable = true
+	
 	#sprite.animation = 'cooked'
+	
+	# set shader
+	if sprite.material != null:
+		sprite.material.set_shader_parameter("is_cooking", false)
+		sprite.material.set_shader_parameter("fixed_time", 5)
+		sprite.material.set_shader_parameter("cook_progress", 1.0)
+		sprite.material.set_shader_parameter("heat_intensity", 1.0)
+	
 	freeze = false
 	_tween_pop_off('right', 1200)
+	await get_tree().create_timer(4).timeout
+	collision_mask = 1
 
 func _tween_pop_off(pop_direction: String, pop_strength: int) -> void:
 	var rand_x = randi_range(250, 500)
@@ -113,26 +114,6 @@ func _tween_pop_off(pop_direction: String, pop_strength: int) -> void:
 			apply_central_impulse(Vector2(-rand_x, -pop_strength))
 		'right':
 			apply_central_impulse(Vector2(rand_x, -pop_strength))
-
-func _check_pointer_within_shape(point: Vector2) -> bool:
-	if collision_body.shape:
-		var local_point = to_local(point)
-		if collision_body.shape is RectangleShape2D:
-			var half_extents = collision_body.shape.size / 2
-			return abs(local_point.x) <= half_extents.x and abs(local_point.y) <= half_extents.y
-		elif collision_body.shape is CircleShape2D:
-			return local_point.length() <= collision_body.shape.radius
-		elif collision_body.shape is CapsuleShape2D:
-			var half_height = collision_body.shape.height / 2 - collision_body.shape.radius
-			#horizontal
-			if abs(local_point.y) <= half_height:
-				return abs(local_point.y) <= collision_body.shape.radius
-			else:
-				#vertical
-				var circle_center = Vector2(0, sign(local_point.y) * half_height)
-				return abs(local_point - circle_center).length() <= collision_body.shape.radius
-	#fallback
-	return false
 
 func _is_point_in_polygon(point: Vector2) -> bool:
 	var local_point = to_local(point)

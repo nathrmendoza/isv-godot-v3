@@ -2,6 +2,7 @@ extends TextureRect
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sprite_parent: Sprite2D = $ShapeMask
+@onready var area_2d: Area2D = $Area2D
 @onready var hotpot_positions: Array = [
 	$ShapeMask/Position1, 
 	$ShapeMask/Position2, 
@@ -14,10 +15,14 @@ extends TextureRect
 var cooking_slots: Array = [null, null, null, null, null, null]
 var slot_sprites: Array = [null, null, null, null, null, null]
 var slot_tweens: Array = [null, null, null, null, null, null]
+
+var slot_cook_progress: Array = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+var slot_cook_timers: Array = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
 var colliding_body_ref: RigidBody2D = null
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready() -> void:	
 	anim_sprite.play('default')
 
 
@@ -44,6 +49,13 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		if colliding_body_ref and _has_slot() and GlobalLevelData.player_is_grabbing:
 			_start_cooking(colliding_body_ref)
 
+func _physics_process(delta: float) -> void:
+	for index in slot_sprites.size():
+		var slot_sprite = slot_sprites[index]
+		if slot_sprite != null and slot_sprite.material != null:
+			slot_sprite.material.set_shader_parameter("cook_progress", clamp(slot_cook_progress[index] + (delta / slot_cook_timers[index]), 0.0, 1.0))
+			slot_cook_progress[index] = clamp(slot_cook_progress[index] + (delta / slot_cook_timers[index]), 0.0, 1.0)
+
 func _start_cooking(ingredient: RigidBody2D = null) -> void:
 	if ingredient == null: return
 	var slot = _get_slot()
@@ -54,6 +66,14 @@ func _start_cooking(ingredient: RigidBody2D = null) -> void:
 	ingredient._start_cooking(hotpot_positions[slot].global_position)
 	
 	var sprite = Sprite2D.new()
+	var sprite_material = ShaderMaterial.new()
+	sprite_material.shader = preload("res://scripts/shaders/shaders_ingredient_cooking.gdshader")
+	
+	sprite.material = sprite_material.duplicate()
+	sprite.material.set_shader_parameter("is_cooking", true)
+	sprite.material.set_shader_parameter("heat_intensity", 1.0)
+	slot_cook_timers[slot] = ingredient.ingredient_resource.cook_timer
+	
 	sprite.modulate = Color(1,1,1,0)
 	sprite.scale = Vector2(0,0)
 	sprite.texture = ingredient._get_anim_texture('raw')
@@ -83,6 +103,8 @@ func _finish_cooking(slot: int) -> void:
 	if ingredient:
 		ingredient._finish_cooking()
 		cooking_slots[slot] = null
+		slot_cook_timers[slot] = 0.0
+		slot_cook_progress[slot] = 0.0
 		slot_sprites[slot].queue_free()
 		slot_sprites[slot] = null
 		slot_tweens[slot].kill()

@@ -6,5 +6,7 @@
 script = ExtResource("1_ltui7")
 action_name = "Tail Whip"
 action_description = ""
-damage_power = 25
+action_type = "damage"
+damage_power = 125.0
 debuff_target = "player"
+animation_state = "attacking"
